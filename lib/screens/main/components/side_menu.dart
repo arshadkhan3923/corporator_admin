@@ -233,7 +233,7 @@ class _SideMenuState extends State<SideMenu> {
                         children: <Widget>[
                           ListTile(
                             onTap: (){
-                              provider.indexUpdate(7);
+                              provider.indexUpdate(8);
                             },
                             title: Text("View All Upload",
                               style: TextStyle(
@@ -251,7 +251,7 @@ class _SideMenuState extends State<SideMenu> {
                   builder: (context, provider, child) {
                     return InkWell(
                       onTap: (){
-                        provider.indexUpdate(8);
+                        provider.indexUpdate(9);
                       },
                       child: SizedBox(
                         height: 50.h,

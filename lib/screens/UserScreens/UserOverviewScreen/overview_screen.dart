@@ -7,11 +7,19 @@ class OverviewScreen extends StatefulWidget {
   int id;
   String? name;
   String? email;
+  String? address;
+  String? phoneNo;
+  String? zipCode;
+  String? purpose;
   String? joiningDate;
    OverviewScreen({Key? key,
      required this.id,
      this.name,
      this.email,
+     this.address,
+     this.phoneNo,
+     this.zipCode,
+     this.purpose,
      this.joiningDate,
   }) : super(key: key);
 
@@ -25,7 +33,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 327.h,
+              height: 500.h,
               // width: 1157.w,
               padding: EdgeInsets.only(left: 30.w, top: 25.h),
               margin: EdgeInsets.all(30.h),
@@ -53,6 +61,14 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           SizedBox(height: 16.h,),
                           OverviewTextWidget(title: "Email"),
                           SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: "Address"),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: "Phone No"),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: "Zip code"),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: "Purpose"),
+                          SizedBox(height: 16.h,),
                           OverviewTextWidget(title: "Joining Date"),
                         ],
                       ),
@@ -63,6 +79,14 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           OverviewTextWidget(title: widget.name!),
                           SizedBox(height: 16.h,),
                           OverviewTextWidget(title: widget.email!),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: widget.address!),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: widget.phoneNo!),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: widget.zipCode!),
+                          SizedBox(height: 16.h,),
+                          OverviewTextWidget(title: widget.purpose!),
                           SizedBox(height: 16.h,),
                           OverviewTextWidget(title: widget.joiningDate!.substring(0,10)),
                         ],

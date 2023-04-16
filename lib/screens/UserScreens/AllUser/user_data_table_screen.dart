@@ -15,11 +15,9 @@ class UserDataTable extends StatefulWidget {
    const UserDataTable({
     Key? key,
   }) : super(key: key);
-
   @override
   State<UserDataTable> createState() => _UserDataTableState();
 }
-
 class _UserDataTableState extends State<UserDataTable> {
   @override
   Widget build(BuildContext context) {
@@ -172,10 +170,11 @@ class _UserDataTableState extends State<UserDataTable> {
                                         id: modelData.data![index].id,
                                         name: modelData.data![index].name.toString(),
                                         email: modelData.data![index].email.toString(),
-                                        // address: modelData.data![index].userinfo!.address.toString(),
-                                        // phoneNo: modelData.data![index].userinfo!.phoneNo.toString(),
-                                        // zipcode: modelData.data![index].userinfo!.zipCode.toString(),
-                                        // purpose: modelData.data![index].userinfo!.purpose.toString(),
+                                        address: modelData.data![index].userinfo != null? modelData.data![index].userinfo!.address.toString():'',
+                                        phoneNo:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.phoneNo.toString():"",
+                                        zipcode:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.zipCode.toString():"",
+                                        purpose:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.purpose.toString():"",
+                                        image:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.picture.toString():"assets/images/Logo_Png_Orange.png",
                                         joiningDate: modelData.data![index].createdAt.substring(0,10),
                                       ),
 
@@ -193,15 +192,15 @@ class _UserDataTableState extends State<UserDataTable> {
                                DataCell(
                                    InkWell(
                                      onTap:(){
-                                        // Overseer.updateUserId= modelData.data![index].id.toString();
+                                        Overseer.updateUserId= modelData.data![index].id.toString();
                                        Get.to( UpdateUserProfileScreen(
                                          id: modelData.data![index].id.toString(),
                                          name: modelData.data![index].name.toString(),
                                          email: modelData.data![index].email.toString(),
-                                         // address: modelData.data![index].userinfo!.address.toString(),
-                                         // phoneNo: modelData.data![index].userinfo!.phoneNo.toString(),
-                                         // zipCode: modelData.data![index].userinfo!.zipCode.toString(),
-                                         // purpose: modelData.data![index].userinfo!.purpose.toString(),
+                                         address:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.address.toString():"",
+                                         phoneNo:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.phoneNo.toString():"",
+                                         zipCode:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.zipCode.toString():"",
+                                         purpose:modelData.data![index].userinfo != null? modelData.data![index].userinfo!.purpose.toString():"",
                                        ),
                                        );
                                      },

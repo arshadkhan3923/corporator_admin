@@ -24,7 +24,7 @@ class _DashboardRolesDataTableState extends State<DashboardRolesDataTable> {
           AllRoleModel modelData = data![0];
           return DataTable(
             horizontalMargin: 0,
-            columnSpacing: MediaQuery.of(context).size.width *.1,
+            columnSpacing: MediaQuery.of(context).size.width *.07,
             columns: [
               DataColumn(
                 label: Row(

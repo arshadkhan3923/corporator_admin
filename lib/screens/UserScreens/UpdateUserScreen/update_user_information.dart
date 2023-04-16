@@ -58,12 +58,12 @@ class _EditUserInformationState extends State<EditUserInformation> {
   @override
   Widget build(BuildContext context) {
     UpdateUserManager updateUserManager = Provider.of(context).fetch(UpdateUserManager);
-    // updateUserManager.inName.add(widget.name!);
-    // updateUserManager.inEmail.add(widget.email!);
-    // updateUserManager.inAddress.add(widget.address!);
-    // updateUserManager.inPhoneNo.add(widget.phoneNo!);
-    // updateUserManager.inZipCode.add(widget.zipcode!);
-    // updateUserManager.inPurpose.add(widget.purpose!);
+    updateUserManager.inName.add(widget.name!);
+    updateUserManager.inEmail.add(widget.email!);
+    updateUserManager.inAddress.add(widget.address!);
+    updateUserManager.inPhoneNo.add(widget.phoneNo!);
+    updateUserManager.inZipCode.add(widget.zipcode!);
+    updateUserManager.inPurpose.add(widget.purpose!);
     return Form(
       key: _formKey,
       child: Container(
@@ -88,297 +88,303 @@ class _EditUserInformationState extends State<EditUserInformation> {
                 ),
               ),
               SizedBox(height: 30.h,),
-              StreamBuilder<Object>(
-                stream: updateUserManager.name$,
-                builder: (context, snapshot) {
-                  return TextFormField(
-                    style: const TextStyle(
-                      color: Overseer.blackColors,
-                    ),
-                    controller: userNameController ,
-                    onChanged: (value){
-                      updateUserManager.inName.add(value);
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.r),
-                        borderSide: BorderSide(color: Colors.black,width: 1.w),
-                      ),
-                      labelStyle:  TextStyle(
-                          color: Colors.grey,fontSize: 16.sp,
-                          fontWeight: FontWeight.w400),
-                      fillColor: Overseer.whiteColors,
-                      filled: true,
-                      errorText: snapshot.error == null
-                          ? ""
-                          : snapshot.error.toString(), labelText: 'Full Name',
-                    ),
-                  );
-                }
-              ),
-              StreamBuilder<Object>(
-                stream: updateUserManager.email$,
-                builder: (context, snapshot) {
-                  return TextFormField(
-                    style: const TextStyle(
-                      color: Overseer.blackColors,
-                    ),
-                    controller: emailController,
-                    onChanged: (value){
-                      updateUserManager .inEmail.add(value);
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.r),
-                        borderSide: BorderSide(color: Colors.black,width: 1.w),
-                      ),
-                      labelStyle:  TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                      ),
-                      fillColor: Overseer.whiteColors,
-                      filled: true,
-                      errorText: snapshot.error == null
-                          ? ""
-                          : snapshot.error.toString(),
-                      labelText: 'Email',
-                    ),
-                  );
-                }
-              ),
-              StreamBuilder<Object>(
-                  stream: updateUserManager.address$,
-                  builder: (context, snapshot) {
-                    return TextFormField(
-                      style: const TextStyle(
-                        color: Overseer.blackColors,
-                      ),
-                      controller: addressController,
-                      onChanged: (value){
-                        updateUserManager .inAddress.add(value);
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.r),
-                          borderSide: BorderSide(color: Colors.black,width: 1.w),
-                        ),
-                        labelStyle:  TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        fillColor: Overseer.whiteColors,
-                        filled: true,
-                        errorText: snapshot.error == null
-                            ? ""
-                            : snapshot.error.toString(),
-                        labelText: 'Address',
-                      ),
-                    );
-                  }
-              ),
-              StreamBuilder<Object>(
-                  stream: updateUserManager.phoneNo$,
-                  builder: (context, snapshot) {
-                    return TextFormField(
-                      style: const TextStyle(
-                        color: Overseer.blackColors,
-                      ),
-                      controller: phoneNoController,
-                      onChanged: (value){
-                        updateUserManager .inPhoneNo.add(value);
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.r),
-                          borderSide: BorderSide(color: Colors.black,width: 1.w),
-                        ),
-                        labelStyle:  TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        fillColor: Overseer.whiteColors,
-                        filled: true,
-                        errorText: snapshot.error == null
-                            ? ""
-                            : snapshot.error.toString(),
-                        labelText: 'Phone No',
-                      ),
-                    );
-                  }
-              ),
-              StreamBuilder<Object>(
-                  stream: updateUserManager.zipCode$,
-                  builder: (context, snapshot) {
-                    return TextFormField(
-                      style: const TextStyle(
-                        color: Overseer.blackColors,
-                      ),
-                      controller: zipCodeController,
-                      onChanged: (value){
-                        updateUserManager .inZipCode.add(value);
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.r),
-                          borderSide: BorderSide(color: Colors.black,width: 1.w),
-                        ),
-                        labelStyle:  TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        fillColor: Overseer.whiteColors,
-                        filled: true,
-                        errorText: snapshot.error == null
-                            ? ""
-                            : snapshot.error.toString(),
-                        labelText: 'ZipCode',
-                      ),
-                    );
-                  }
-              ),
-              StreamBuilder<Object>(
-                  stream: updateUserManager.purpose$,
-                  builder: (context, snapshot) {
-                    return TextFormField(
-                      style: const TextStyle(
-                        color: Overseer.blackColors,
-                      ),
-                      controller: purposeController,
-                      onChanged: (value){
-                        updateUserManager .inPurpose.add(value);
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.r),
-                          borderSide: BorderSide(color: Colors.black,width: 1.w),
-                        ),
-                        labelStyle:  TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        fillColor: Overseer.whiteColors,
-                        filled: true,
-                        errorText: snapshot.error == null
-                            ? ""
-                            : snapshot.error.toString(),
-                        labelText: 'Purpose',
-                      ),
-                    );
-                  }
-              ),
-              SizedBox(height: 50.h,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
-                      height: 50.h,
-                      width: 140.w,
-                      decoration: BoxDecoration(
-                        color: Overseer.whiteColors,
-                        border: Border.all(color: Overseer.bgColor),
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      child: Center(
-                        child: Text('Cancel',
-                          style: TextStyle(
-                            color:  Overseer.bgColor,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10.w,),
-                  StreamBuilder<Object>(
-                      stream: updateUserManager.isUserFormValid$,
-                      builder: (context, snapshot) {
-                        return InkWell(
-                          onTap: () {
-                            Overseer.updateUserId = widget.id;
-                              print("submit${Overseer.updateUserId}");
-                            if (snapshot.hasData == true){
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context){
-                                  return const Center(
-                                    child: CircularProgressIndicator(
-                                      color: Colors.white,
-                                    ),
-                                  );
-                                },
-                                barrierDismissible: false,
-                              );
-                              updateUserManager.isUserFormSubmit$.listen((event) {}
-                              ).onDone(() {
-                                Navigator.of(context).pop();
-                                if (Overseer.statusCode == '200') {
-                                  Navigator.pop(context);
-                                }
-                              });
-                            } else {
-                              if (snapshot.error == null) {
-                                Get.snackbar(
-                                  "Error",
-                                  "Fill the form Properly",
-                                  colorText: Overseer.whiteColors,
-                                  dismissDirection: DismissDirection.horizontal,
-                                  isDismissible: true,
-                                  backgroundColor: Colors.orangeAccent,
-                                  duration: const Duration(seconds: 3),
-                                  icon: const Icon(
-                                    Icons.error_outline,
-                                    color: Colors.red,
-                                  ),
-                                );
-                              } else {
-                                Get.snackbar(
-                                  colorText: Colors.red,
-                                  "Error",
-                                  "${snapshot.error}",
-                                  dismissDirection: DismissDirection.horizontal,
-                                  isDismissible: true,
-                                  backgroundColor: Colors.orangeAccent,
-                                  duration: const Duration(seconds: 3),
-                                  icon: const Icon(
-                                    Icons.error_outline,
-                                    color: Colors.red,
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                          child:  Container(
-                            height: 50.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.r),
-                              color: Overseer.bgColor,
-                            ),
-                            child: Center(
-                              child: Text('Update',
-                                style: TextStyle(
-                                  color:  Overseer.whiteColors,
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                ],
-              ),
-              SizedBox(height: 20.h,),
+             SingleChildScrollView(
+               child: Column(
+                 children: [
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.name$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: userNameController ,
+                           onChanged: (value){
+                             updateUserManager.inName.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                                 color: Colors.grey,fontSize: 16.sp,
+                                 fontWeight: FontWeight.w400),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(), labelText: 'Full Name',
+                           ),
+                         );
+                       }
+                   ),
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.email$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: emailController,
+                           onChanged: (value){
+                             updateUserManager .inEmail.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                               color: Colors.grey,
+                               fontSize: 16.sp,
+                               fontWeight: FontWeight.w400,
+                             ),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(),
+                             labelText: 'Email',
+                           ),
+                         );
+                       }
+                   ),
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.address$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: addressController,
+                           onChanged: (value){
+                             updateUserManager .inAddress.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                               color: Colors.grey,
+                               fontSize: 16.sp,
+                               fontWeight: FontWeight.w400,
+                             ),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(),
+                             labelText: 'Address',
+                           ),
+                         );
+                       }
+                   ),
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.phoneNo$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: phoneNoController,
+                           onChanged: (value){
+                             updateUserManager .inPhoneNo.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                               color: Colors.grey,
+                               fontSize: 16.sp,
+                               fontWeight: FontWeight.w400,
+                             ),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(),
+                             labelText: 'Phone No',
+                           ),
+                         );
+                       }
+                   ),
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.zipCode$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: zipCodeController,
+                           onChanged: (value){
+                             updateUserManager .inZipCode.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                               color: Colors.grey,
+                               fontSize: 16.sp,
+                               fontWeight: FontWeight.w400,
+                             ),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(),
+                             labelText: 'ZipCode',
+                           ),
+                         );
+                       }
+                   ),
+                   StreamBuilder<Object>(
+                       stream: updateUserManager.purpose$,
+                       builder: (context, snapshot) {
+                         return TextFormField(
+                           style: const TextStyle(
+                             color: Overseer.blackColors,
+                           ),
+                           controller: purposeController,
+                           onChanged: (value){
+                             updateUserManager .inPurpose.add(value);
+                           },
+                           decoration: InputDecoration(
+                             border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(15.r),
+                               borderSide: BorderSide(color: Colors.black,width: 1.w),
+                             ),
+                             labelStyle:  TextStyle(
+                               color: Colors.grey,
+                               fontSize: 16.sp,
+                               fontWeight: FontWeight.w400,
+                             ),
+                             fillColor: Overseer.whiteColors,
+                             filled: true,
+                             errorText: snapshot.error == null
+                                 ? ""
+                                 : snapshot.error.toString(),
+                             labelText: 'Purpose',
+                           ),
+                         );
+                       }
+                   ),
+                   SizedBox(height: 50.h,),
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.end,
+                     children: [
+                       InkWell(
+                         onTap: (){
+                           Navigator.of(context).pop();
+                         },
+                         child: Container(
+                           height: 50.h,
+                           width: 140.w,
+                           decoration: BoxDecoration(
+                             color: Overseer.whiteColors,
+                             border: Border.all(color: Overseer.bgColor),
+                             borderRadius: BorderRadius.circular(10.r),
+                           ),
+                           child: Center(
+                             child: Text('Cancel',
+                               style: TextStyle(
+                                 color:  Overseer.bgColor,
+                                 fontSize: 18.sp,
+                                 fontWeight: FontWeight.w500,
+                               ),
+                             ),
+                           ),
+                         ),
+                       ),
+                       SizedBox(width: 10.w,),
+                       StreamBuilder<Object>(
+                           stream: updateUserManager.isUserFormValid$,
+                           builder: (context, snapshot) {
+                             return InkWell(
+                               onTap: () {
+                                 Overseer.updateUserId = widget.id;
+                                 print("submit${Overseer.updateUserId}");
+                                 if (snapshot.hasData == true){
+                                   showDialog(
+                                     context: context,
+                                     builder: (BuildContext context){
+                                       return const Center(
+                                         child: CircularProgressIndicator(
+                                           color: Colors.white,
+                                         ),
+                                       );
+                                     },
+                                     barrierDismissible: false,
+                                   );
+                                   updateUserManager.isUserFormSubmit$.listen((event) {}
+                                   ).onDone(() {
+                                     Navigator.of(context).pop();
+                                     if (Overseer.statusCode == '200') {
+                                       Navigator.pop(context);
+                                     }
+                                   });
+                                 } else {
+                                   if (snapshot.error == null) {
+                                     Get.snackbar(
+                                       "Error",
+                                       "Fill the form Properly",
+                                       colorText: Overseer.whiteColors,
+                                       dismissDirection: DismissDirection.horizontal,
+                                       isDismissible: true,
+                                       backgroundColor: Colors.orangeAccent,
+                                       duration: const Duration(seconds: 3),
+                                       icon: const Icon(
+                                         Icons.error_outline,
+                                         color: Colors.red,
+                                       ),
+                                     );
+                                   } else {
+                                     Get.snackbar(
+                                       colorText: Colors.red,
+                                       "Error",
+                                       "${snapshot.error}",
+                                       dismissDirection: DismissDirection.horizontal,
+                                       isDismissible: true,
+                                       backgroundColor: Colors.orangeAccent,
+                                       duration: const Duration(seconds: 3),
+                                       icon: const Icon(
+                                         Icons.error_outline,
+                                         color: Colors.red,
+                                       ),
+                                     );
+                                   }
+                                 }
+                               },
+                               child:  Container(
+                                 height: 50.h,
+                                 width: 140.w,
+                                 decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.circular(10.r),
+                                   color: Overseer.bgColor,
+                                 ),
+                                 child: Center(
+                                   child: Text('Update',
+                                     style: TextStyle(
+                                       color:  Overseer.whiteColors,
+                                       fontSize: 18.sp,
+                                       fontWeight: FontWeight.w500,
+                                     ),
+                                   ),
+                                 ),
+                               ),
+                             );
+                           }),
+                     ],
+                   ),
+                   SizedBox(height: 20.h,),
+                 ],
+               ),
+             )
             ],
           ),
         ),

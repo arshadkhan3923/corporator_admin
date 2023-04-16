@@ -14,6 +14,7 @@ class ViewUserScreen extends StatefulWidget {
   String? phoneNo;
   String? zipcode;
   String? purpose;
+  String? image;
   String? joiningDate;
    ViewUserScreen({Key? key,
      required this.id,
@@ -23,7 +24,7 @@ class ViewUserScreen extends StatefulWidget {
      this.phoneNo,
      this.zipcode,
      this.purpose,
-
+     this.image,
      this.joiningDate,
   }) : super(key: key);
   @override
@@ -50,9 +51,9 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 40.r,
-                      backgroundImage: const AssetImage(
-                          "assets/images/profile.png",
+                      radius: 50.r,
+                      backgroundImage:  NetworkImage(
+                          widget.image.toString(),
                       ),
                     ),
                     SizedBox(width: 15.w,),
@@ -179,6 +180,10 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
             id: widget.id,
             name: widget.name,
             email: widget.email,
+            address: widget.address,
+            phoneNo: widget.phoneNo,
+            zipCode: widget.zipcode,
+            purpose: widget.purpose,
             joiningDate: widget.joiningDate?.substring(0,10),
           ) :
           _isListVisible == 2 ? const ActivitiesScreen() :
