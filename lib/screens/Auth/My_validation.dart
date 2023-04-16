@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 
 mixin MyValidation {
@@ -71,7 +70,6 @@ mixin MyValidation {
   static bool  isEditUserPhoneNoLength(String text) => text.length >= 2;
   static bool  isEditUserZipCodeLength(String text) => text.length >= 2;
   static bool  isEditUserPurposeLength(String text) => text.length >= 2;
-
 
   ///TODO: ALL ROLE
   static bool isRoleEmailLength(String email) => email.contains('@');
@@ -448,7 +446,6 @@ mixin MyValidation {
       sink.addError("Required Integer");
     }
   });
-///
   /// TODO: UPDATE USER
   final updateUserNameLength =
   StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
@@ -699,7 +696,6 @@ mixin MyValidation {
     }
   });
 ///
-///
   ///TODO: ALL Vendor
   final nameVendorLength =
   StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
@@ -739,8 +735,6 @@ mixin MyValidation {
       sink.addError("Required Company");
     }
   });
-  ///
-
   /// Role Get Api
   final appRoleNameLength =
   StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
@@ -793,19 +787,4 @@ mixin MyValidation {
       sink.addError("Required Your Decrypt");
     }
   });
-  ///
-  // final appRoleOwenIdLength =
-  // StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
-  //   if (isRoleOwnerIdLength(value)) {
-  //     sink.add(value);
-  //   } else {
-  //     if (kDebugMode) {
-  //       print("Enter Your OwenId > $value");
-  //     }
-  //     sink.add("");
-  //     sink.addError("Required Integer");
-  //   }
-  // });
-
 }
-

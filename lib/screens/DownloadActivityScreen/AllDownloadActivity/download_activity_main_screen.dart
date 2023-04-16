@@ -16,6 +16,7 @@ class DownloadActivityMainScreen  extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const DashboardBigTextWidgets(title: 'Download Activity',),
+
         SizedBox(height: 30.h,),
         Container(
           decoration: BoxDecoration(

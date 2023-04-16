@@ -27,7 +27,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(const Duration(seconds: 0), () async {SharedPreferences sharedP = await SharedPreferences.getInstance();
+    Timer(const Duration(seconds: 0),
+            () async {SharedPreferences sharedP = await SharedPreferences.getInstance();
       String? userToken = sharedP.getString('access_token');
       if(userToken == null){
         Get.to(LoginScreen());
@@ -62,7 +63,6 @@ class _MyAppState extends State<MyApp> {
                   fontFamily: 'Poppins',
                   textTheme: Typography.dense2021.apply(fontSizeFactor:1.sp),
                 ),
-
                 home: LoginScreen(),
               ),
             ),

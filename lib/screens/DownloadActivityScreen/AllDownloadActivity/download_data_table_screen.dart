@@ -16,6 +16,7 @@ class DownloadDataTable extends StatelessWidget {
   Widget build(BuildContext context) {
     AllDownloadManager allDownloadManager =
     Provider.of(context).fetch(AllDownloadManager);
+
     return Observer<List<DownloadModel>>(
         stream: allDownloadManager.mainList,
         onSuccess: (context,snapshot) {

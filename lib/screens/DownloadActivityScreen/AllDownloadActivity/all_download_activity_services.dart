@@ -22,12 +22,15 @@ class AllDownloadService {
       if (kDebugMode) {
         print("this is service ");
       }
+
       if (kDebugMode) {
         print("APi Response");
+
       }
       list.add(DownloadModel.fromJson(map));
       /// print Response Api
-      if (kDebugMode) {
+
+        if (kDebugMode) {
         print(response.toString());
       }
     } else {}
