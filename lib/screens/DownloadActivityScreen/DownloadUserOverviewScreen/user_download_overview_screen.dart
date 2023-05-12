@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import 'DownloadActivityScreen/download_activities_screen.dart';
 import 'DownloadSettingScreen/download_setting_screen.dart';
 import 'download_overview_screen.dart';
 
 class ViewDownloadScreen extends StatefulWidget {
-  String id;
+  final Function() notifyParent;
   String? name;
-  String? count;
+
   String? activity;
   String? createDate;
+  String? image;
     ViewDownloadScreen({Key? key,
-     required this.id,
+     required this.notifyParent,
      this.name,
-     this.count,
+
      this.activity,
      this.createDate,
+     this.image,
   }) : super(key: key);
   @override
   State<ViewDownloadScreen> createState() => _ViewDownloadScreenState();
@@ -44,14 +45,22 @@ class _ViewDownloadScreenState extends State<ViewDownloadScreen> {
                   children: [
                     Row(
                       children: [
+                        IconButton(
+                            onPressed: () {
+                              print("********************************************************");
+                              Overseer.viewVisi = false;
+                              Overseer.editVisi = false;
+                              widget.notifyParent();
+                            },
+                            icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
                         CircleAvatar(
                           radius: 40.r,
-                          backgroundImage: const AssetImage(
-                            "assets/images/profile.png",
+                          backgroundImage:  AssetImage(
+                            widget.image.toString(),
                           ),
                         ),
                         SizedBox(width: 15.w,),
-                        Text("Arshad Khan",
+                        Text(widget.name.toString(),
                           style: TextStyle(
                             color: Overseer.whiteColors,
                             fontSize: 24.sp,
@@ -171,13 +180,12 @@ class _ViewDownloadScreenState extends State<ViewDownloadScreen> {
                 ),
               ),
               _isListVisible == 1 ? OverviewDownloadScreen(
-                id: widget.id,
                 name: widget.name,
-                count: widget.count,
+
                 activity: widget.activity,
                 createDate: widget.createDate,
               ) :
-              _isListVisible == 2 ? const DownloadActivitiesScreen() :
+              // _isListVisible == 2 ? const ActivitiesScreen() :
               _isListVisible == 3 ? const DownloadSettingScreen() : Container(),
             ],
           ),

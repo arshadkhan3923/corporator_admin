@@ -6,7 +6,7 @@ import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../../AppLayers/Streaming/Provider.dart';
 
 // ignore: must_be_immutable
-class EditUserInformation extends StatefulWidget {
+class UpdateUserInformation extends StatefulWidget {
   String id;
   String? name;
   String? email;
@@ -14,19 +14,20 @@ class EditUserInformation extends StatefulWidget {
   String? phoneNo;
   String? zipcode;
   String? purpose;
-   EditUserInformation({Key? key,
+  String? image;
+   UpdateUserInformation({Key? key,
     required this.id,
     this.name,
     this.email,
     this.address,
     this.phoneNo,
     this.zipcode,
-    this.purpose,
+    this.purpose,this.image
   }) : super(key: key);
   @override
-  State<EditUserInformation> createState() => _EditUserInformationState();
+  State<UpdateUserInformation> createState() => _UpdateUserInformationState();
 }
-class _EditUserInformationState extends State<EditUserInformation> {
+class _UpdateUserInformationState extends State<UpdateUserInformation> {
   final _formKey = GlobalKey<FormState>();
   final userNameController = TextEditingController();
   final emailController = TextEditingController();
@@ -39,10 +40,10 @@ class _EditUserInformationState extends State<EditUserInformation> {
   void initState() {
     userNameController.text= widget.name!;
     emailController.text= widget.email!;
-    emailController.text= widget.address!;
-    emailController.text= widget.phoneNo!;
-    emailController.text= widget.zipcode!;
-    emailController.text= widget.purpose!;
+    addressController.text= widget.address!;
+    phoneNoController.text= widget.phoneNo!;
+    zipCodeController.text= widget.zipcode!;
+    purposeController.text= widget.purpose!;
     super.initState();
   }
   @override
@@ -67,6 +68,7 @@ class _EditUserInformationState extends State<EditUserInformation> {
     return Form(
       key: _formKey,
       child: Container(
+        height: 620.h,
         margin: EdgeInsets.only(left: 20.w,right: 20.w),
         decoration: BoxDecoration(
           color: Overseer.whiteColors,
@@ -88,8 +90,10 @@ class _EditUserInformationState extends State<EditUserInformation> {
                 ),
               ),
               SizedBox(height: 30.h,),
-             SingleChildScrollView(
-               child: Column(
+             SizedBox(
+               height: 530.h,
+               child: ListView(
+                 scrollDirection: Axis.vertical,
                  children: [
                    StreamBuilder<Object>(
                        stream: updateUserManager.name$,

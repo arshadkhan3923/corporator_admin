@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import 'UploadActivityScreen/upload_activities_screen.dart';
+import '../../UserScreens/UserOverviewScreen/SpecificActivitiesScreen/activities_screen.dart';
 import 'upload_overview_screen.dart';
 import 'UploadSettingScreen/upload_setting_screen.dart';
 
 class ViewUploadScreen extends StatefulWidget {
-  String id;
+  final Function() notifyParent;
+  String? id;
   String? name;
-  String? count;
   String? activity;
   String? createDate;
+  String? image;
     ViewUploadScreen({Key? key,
      required this.id,
+     required this.notifyParent,
      this.name,
-     this.count,
      this.activity,
      this.createDate,
+     this.image,
   }) : super(key: key);
   @override
   State<ViewUploadScreen> createState() => _ViewUploadScreenState();
@@ -44,14 +46,22 @@ class _ViewUploadScreenState extends State<ViewUploadScreen> {
                   children: [
                     Row(
                       children: [
+                        IconButton(
+                            onPressed: () {
+                              print("********************************************************");
+                              Overseer.viewVisi = false;
+                              Overseer.editVisi = false;
+                              widget.notifyParent();
+                            },
+                            icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
                         CircleAvatar(
                           radius: 40.r,
-                          backgroundImage: const AssetImage(
-                            "assets/images/profile.png",
+                          backgroundImage:  AssetImage(
+                            widget.image.toString(),
                           ),
                         ),
                         SizedBox(width: 15.w,),
-                        Text("Arshad Khan",
+                        Text(widget.name.toString(),
                           style: TextStyle(
                             color: Overseer.whiteColors,
                             fontSize: 24.sp,
@@ -173,11 +183,10 @@ class _ViewUploadScreenState extends State<ViewUploadScreen> {
               _isListVisible == 1 ? UploadOverviewScreen(
                 id: widget.id,
                 name: widget.name,
-                count: widget.count,
                 activity: widget.activity,
                 createDate: widget.createDate,
               ) :
-              _isListVisible == 2 ? const UploadActivitiesScreen() :
+              // _isListVisible == 2 ? const SpecificActivitiesScreen() :
               _isListVisible == 3 ? const UploadSettingScreen() : Container(),
             ],
           ),

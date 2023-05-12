@@ -4,7 +4,17 @@ import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../DownloadActivityScreen/DownloadUserOverviewScreen/download_overview_screen_text.dart';
 
 class OverviewMemoryQuotaScreen extends StatefulWidget {
-  const OverviewMemoryQuotaScreen({
+  String? userName;
+  String? packName;
+  String? maxSpace;
+  String? duration;
+  String? image;
+  OverviewMemoryQuotaScreen({
+    this.userName,
+    this. packName,
+    this.maxSpace,
+    this. duration,
+    this. image,
     Key? key,
   }) : super(key: key);
 
@@ -46,26 +56,26 @@ class _OverviewDownloadScreenState extends State<OverviewMemoryQuotaScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        OverviewTextWidget(title: "Name"),
+                        OverviewTextWidget(title: "User Name"),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title: "Email"),
+                        OverviewTextWidget(title: "Package Name"),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title: "Decrypt"),
+                        OverviewTextWidget(title: "MaxSpace"),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title: "Updated Date"),
+                        OverviewTextWidget(title: "Duration"),
                       ],
                     ),
                     SizedBox(width: 250.w,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        OverviewTextWidget(title: ".name"),
+                        OverviewTextWidget(title: widget.userName!),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title:" .email"),
+                        OverviewTextWidget(title:widget.packName!),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title: ".decrypt"),
+                        OverviewTextWidget(title: widget.maxSpace!),
                         SizedBox(height: 10.h,),
-                        OverviewTextWidget(title: ".updatedAt"),
+                        OverviewTextWidget(title: widget.duration!),
                       ],
                     ),
                     const Spacer(),

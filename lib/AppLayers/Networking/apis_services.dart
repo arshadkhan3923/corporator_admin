@@ -80,7 +80,7 @@ class ApiService {
   }
   ///get  All Specific user
   Future<Response> getAllSpecificData() {
-    return networkClient.get('api/activity/user/${Overseer.userId}',{});
+    return networkClient.get('api/activity/user/${Overseer.spacUsDowActId}',{});
   }
   ///get  All Revenue user
   Future<Response> getAllRevenueData() {
@@ -89,6 +89,10 @@ class ApiService {
   ///get  All Specific user
   Future<Response> getAllUserPackageData() {
     return networkClient.get('api/admin/userpacakges',{});
+  }
+  ///get Memory quota view
+  Future<Response> getMemoryQuotaData() {
+    return networkClient.get('api/admin/AllPackagesList', {});
   }
 
 }

@@ -4,12 +4,12 @@ import '../../../AppLayers/Streaming/Overseer.dart';
 import 'role_overview_screen_text.dart';
 
 class OverviewRoleScreen extends StatelessWidget {
-  String id;
+  String? id;
   String? name;
   String? email;
   String? update;
    OverviewRoleScreen({Key? key,
-     required this.id,
+      this.id,
      this.name,
      this.email,
      this.update,

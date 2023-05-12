@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import '../../../../AppLayers/Networking/apis_services.dart';
 import '../../../../AppLayers/Networking/network_client.dart';
@@ -16,7 +17,7 @@ class AddNewUserService {
       ) async {
     final response = await apiService.postNewAppUserData(
         {
-          // 'logo_url':"assets/images/profile.png",
+          'picture':"assets/images/profile.png",
           'address': userAddress.toString(),
           'phone_no': userPhoneNumber.toString(),
           'zip_code': userZipCode.toString(),
@@ -27,9 +28,15 @@ class AddNewUserService {
     Overseer.statusCode = response.statusCode.toString();
     if (response.statusCode == 200) {
       Map<String, dynamic> map = jsonDecode(response.toString());
-      print("===========User add ===========");
-      print(map.toString());
-      print("===========User add ===========");
+      if (kDebugMode) {
+        print("===========User add ===========");
+      }
+      if (kDebugMode) {
+        print(map.toString());
+      }
+      if (kDebugMode) {
+        print("===========User add ===========");
+      }
 
       return true;
     } else {

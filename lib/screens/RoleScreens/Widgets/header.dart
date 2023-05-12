@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../../controllers/MenuController.dart';
 import '../../../responsive.dart';
-import '../../../utils/app_images.dart';
-import '../../Auth/login/login_screen.dart';
+import '../../ProfileScreen/profile_screen.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -54,48 +52,13 @@ class Header extends StatelessWidget {
             ),
           ),
           SizedBox(width: Get.width *.010,),
-          const ProfileCard(),
-          SizedBox(width: Get.width *.010,),
-          TextButton(onPressed: () async {
-            SharedPreferences sharedP = await SharedPreferences.getInstance();
-            sharedP.remove('access_token');
-            Get.offAll(LoginScreen());
-            Get.snackbar(
-              "Message",
-              "Successfully Logout",
-              dismissDirection:
-              DismissDirection.horizontal,
-              isDismissible: true,
-              backgroundColor:Colors.orangeAccent,
-              duration: const Duration(seconds: 3),
-              icon: const Icon(Icons.error_outline,
-                color: Colors.red,
-              ),
-            );
-          }, child: const Text("Logout")),
+         const ProfileScreen(),
+          SizedBox(width: Get.width *.020,),
         ],
       ),
     );
   }
 }
-
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return  Padding(
-      padding:  EdgeInsets.only(top: 5.h,bottom: 5.h),
-      child: CircleAvatar(
-        radius: 30.r,
-        backgroundImage: AssetImage(AppImages.profileImage),
-      ),
-    );
-  }
-}
-
 class SearchField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String)? onChange;

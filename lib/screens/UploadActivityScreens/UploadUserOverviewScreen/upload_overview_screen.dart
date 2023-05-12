@@ -3,21 +3,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../../Widgets/alertDialog_row_widgets.dart';
 
-class UploadOverviewScreen extends StatelessWidget {
-  String id;
+class UploadOverviewScreen extends StatefulWidget {
+  String? id;
   String? name;
-  String? count;
+
   String? activity;
   String? createDate;
    UploadOverviewScreen({
     Key? key,
     required this.id,
     this.name,
-    this.count,
+
     this.activity,
     this.createDate,
   }) : super(key: key);
+
+  @override
+  State<UploadOverviewScreen> createState() => _UploadOverviewScreenState();
+}
+
+class _UploadOverviewScreenState extends State<UploadOverviewScreen> {
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -47,29 +54,12 @@ class UploadOverviewScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Image.asset(
-                    //   'assets/images/details_pic.png',
-                    //   height: 290.h,
-                    //   width: 194.w,
-                    // ),
-                    // SizedBox(
-                    //   width: 20.w,
-                    // ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 25.h,),
-                        SizedBox(
-                          height: 20.h,
-                        ),
+                        SizedBox(height: 20.h,),
                         const AlertDialogOneWidget(
                           title: 'Name',
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        const AlertDialogOneWidget(
-                          title: 'Count',
                         ),
                         SizedBox(
                           height: 25.h,
@@ -83,38 +73,30 @@ class UploadOverviewScreen extends StatelessWidget {
                         const AlertDialogOneWidget(
                           title: 'Create Date',
                         ),
-
                       ],
                     ),
                     SizedBox(
                       width: 150.w,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const AlertDialogTwoWidget(
-                          title: "widget.name!",
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        AlertDialogTwoWidget(
-                          title: count!,
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        AlertDialogTwoWidget(
-                          title: activity!,
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        AlertDialogTwoWidget(
-                          title: createDate!.substring(0,10),
-                        ),
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      AlertDialogTwoWidget(
+                        title: widget.name.toString(),
+                      ),
+                      SizedBox(
+                        height: 25.h,
+                      ),
+                      AlertDialogTwoWidget(
+                        title: widget.activity.toString(),
+                      ),
+                      SizedBox(
+                        height: 25.h,
+                      ),
+                      AlertDialogTwoWidget(
+                        title: widget.createDate.toString().substring(0,10),
+                      ),
+                    ],
+                  )
                   ],
                 ),
                 SizedBox(height: 40.h,),

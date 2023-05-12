@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../AppLayers/Streaming/Observer.dart';
 import '../../../../AppLayers/Streaming/Overseer.dart';
 import '../../../../AppLayers/Streaming/Provider.dart';
-import '../../../UserScreens/UserOverviewScreen/UserActivityScreen/specific_user_manager.dart';
-import '../../../UserScreens/UserOverviewScreen/UserActivityScreen/specific_user_model.dart';
+import '../../../UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_manager.dart';
+import '../../../UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_model.dart';
 
 class DownloadActivitiesScreen extends StatelessWidget {
   const DownloadActivitiesScreen({Key? key}) : super(key: key);
@@ -48,29 +48,45 @@ class DownloadActivitiesScreen extends StatelessWidget {
                             return  ListTile(
                               leading: CircleAvatar(
                                   backgroundColor: modelData.data[index].activity=="login"
-                                      ? Overseer.primaryColor:modelData.data[index].activity=="upload"
-                                      ?Colors.orangeAccent:modelData.data[index].activity=="download"
-                                      ? Colors.blue:modelData.data[index].activity=="delete"
-                                      ? Colors.red:modelData.data[index].activity=="logOut"
-                                      ?Colors.red:modelData.data[index].activity=="register"
-                                      ?Colors.blue:null,
+                                      ? Overseer.primaryColor
+                                      :modelData.data[index].activity=="upload"
+                                      ?Colors.orangeAccent
+                                      :modelData.data[index].activity=="download"
+                                      ? Colors.blue
+                                      :modelData.data[index].activity=="delete"
+                                      ? Colors.red
+                                      :modelData.data[index].activity=="logOut"
+                                      ?Colors.red
+                                      :modelData.data[index].activity=="register"
+                                      ?Colors.blue
+                                      :modelData.data[index].activity=="store"
+                                      ? Colors.green
+                                      :null,
                                   radius: 50.r,
                                   child:modelData.data[index].activity=="login"
-                                      ? const Icon(Icons.login):modelData.data[index].activity=="upload"
-                                      ?const Icon(Icons.upload):modelData.data[index].activity=="download"
-                                      ? const Icon(Icons.download):modelData.data[index].activity=="delete"
-                                      ? const Icon(Icons.delete):modelData.data[index].activity=="logOut"
-                                      ?const Icon(Icons.logout_outlined):modelData.data[index].activity=="register"
-                                      ?const Icon(Icons.app_registration_outlined):null
+                                      ? const Icon(Icons.login)
+                                      :modelData.data[index].activity=="upload"
+                                      ?const Icon(Icons.upload)
+                                      :modelData.data[index].activity=="download"
+                                      ? const Icon(Icons.download)
+                                      :modelData.data[index].activity=="delete"
+                                      ? const Icon(Icons.delete)
+                                      :modelData.data[index].activity=="logOut"
+                                      ?const Icon(Icons.logout_outlined)
+                                      :modelData.data[index].activity=="register"
+                                      ?const Icon(Icons.app_registration_outlined)
+                                      :modelData.data[index].activity=="store"
+                                      ? const Icon(Icons.store)
+                                      :null
                               ),
-                              title: Text(modelData.data[index].createdAt.substring(0,10),
+                              title: Text(modelData.data[index].activity,
                                   style:  TextStyle(
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.w500,
                                     color: Overseer.grayColors,
                                   )
                               ),
-                              subtitle: Text(modelData.data[index].activity,
+                              subtitle: Text(modelData.data[index].createdAt.substring(0,10),
                                 style:  TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w500,

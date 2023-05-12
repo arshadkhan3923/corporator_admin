@@ -24,7 +24,7 @@ class _DashboardRolesDataTableState extends State<DashboardRolesDataTable> {
           AllRoleModel modelData = data![0];
           return DataTable(
             horizontalMargin: 0,
-            columnSpacing: MediaQuery.of(context).size.width *.07,
+            columnSpacing: MediaQuery.of(context).size.width *.09,
             columns: [
               DataColumn(
                 label: Row(
@@ -77,8 +77,7 @@ class _DashboardRolesDataTableState extends State<DashboardRolesDataTable> {
                     cells: [
                       DataCell(
                         Padding(
-                          padding:  EdgeInsets.symmetric(
-                              horizontal: defaultPadding),
+                          padding:  const EdgeInsets.symmetric(horizontal: defaultPadding),
                           child: Text(modelData.data[index].id.toString(),
                             style: TextStyle(
                               color: Overseer.textColors,
@@ -106,7 +105,6 @@ class _DashboardRolesDataTableState extends State<DashboardRolesDataTable> {
                           ),
                         ),
                       ),
-
                     ],
                   );
                 }

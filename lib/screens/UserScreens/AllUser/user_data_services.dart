@@ -10,13 +10,12 @@ class UserDataTableService {
   ApiService(networkClient: Get.put(NetworkClient()));
   List<UserModel> list = [];
   Future<List<UserModel>> browse() async {
-    print("this is srvice ");
+    print("this is service ");
     final response = await apiService.getUserDataTable();
-    // String content = response.toString();
-    print("this is srvice ");
+    print("this is service ");
     Map<String, dynamic> map = jsonDecode(response.toString());
     if (response.statusCode == 200) {
-      print("this is srvice ");
+      print("this is service ");
 
       print("APi Response");
       list.add(UserModel.fromJson(map));

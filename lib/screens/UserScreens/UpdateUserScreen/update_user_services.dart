@@ -11,7 +11,6 @@ class UpdateUserService {
   late ApiService apiService =
   ApiService(networkClient: Get.put(NetworkClient()));
   List<UpdateUserModel> list = [];
-
   Future<bool> updateUserSubmitForm(
       final name,
       final email,
@@ -20,8 +19,7 @@ class UpdateUserService {
       final zipCode,
       final purpose,
       ) async {
-    final response = await apiService.postUpdateUserData(
-      {
+    final response = await apiService.postUpdateUserData({
           'name': name.toString(),
           'email': email.toString(),
           'address': address.toString(),
@@ -34,10 +32,8 @@ class UpdateUserService {
       Map<String, dynamic> map = jsonDecode(response.toString());
       list.add(UpdateUserModel.fromJson(map));
       String? message = list[0].data.toString();
-      if (kDebugMode) {
         if (kDebugMode) {
           print(list[0].toString());
-        }
       }
       if (kDebugMode) {
         print("==================Update User=================");
@@ -48,7 +44,8 @@ class UpdateUserService {
         backgroundColor: Colors.orangeAccent,
         message,
         icon: const Icon(Icons.error_outline,
-        color: Colors.white),
+        color: Colors.white,
+        ),
         snackPosition: SnackPosition.TOP,
       );
       return true;

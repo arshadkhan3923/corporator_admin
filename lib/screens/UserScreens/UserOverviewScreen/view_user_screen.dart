@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import 'UserActivityScreen/activities_screen.dart';
+import 'SpecificActivitiesScreen/activities_screen.dart';
 import '../UserOverviewScreen/overview_screen.dart';
 import 'UserSettingScreen/setting_screen.dart';
 
 // ignore: must_be_immutable
 class ViewUserScreen extends StatefulWidget {
-  int id;
+  final Function() notifyParent;
+  int? id;
   String? name;
   String? email;
   String? address;
@@ -16,16 +17,17 @@ class ViewUserScreen extends StatefulWidget {
   String? purpose;
   String? image;
   String? joiningDate;
-   ViewUserScreen({Key? key,
-     required this.id,
-     this.name,
-     this.email,
-     this.address,
-     this.phoneNo,
-     this.zipcode,
-     this.purpose,
-     this.image,
-     this.joiningDate,
+  ViewUserScreen({Key? key,
+     this.id,
+    this.name,
+    this.email,
+    this.address,
+    this.phoneNo,
+    this.zipcode,
+    this.purpose,
+    this.image,
+    this.joiningDate,
+    required this.notifyParent,
   }) : super(key: key);
   @override
   State<ViewUserScreen> createState() => _ViewUserScreenState();
@@ -35,8 +37,9 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
   int _isListVisible = 1;
   @override
   Widget build(BuildContext context,) {
-    return  Scaffold(
-      body: Column(
+    return  Expanded(
+      flex: 5,
+      child: Column(
         children: [
           Container(
             padding: EdgeInsets.all(30.h),
@@ -50,10 +53,17 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    IconButton(
+                        onPressed: () {
+                          Overseer.viewVisi = false;
+                          Overseer.editVisi = false;
+                          widget.notifyParent();
+                        },
+                        icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
                     CircleAvatar(
                       radius: 50.r,
                       backgroundImage:  NetworkImage(
-                          widget.image.toString(),
+                        widget.image.toString(),
                       ),
                     ),
                     SizedBox(width: 15.w,),
@@ -186,8 +196,8 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
             purpose: widget.purpose,
             joiningDate: widget.joiningDate?.substring(0,10),
           ) :
-          _isListVisible == 2 ? const ActivitiesScreen() :
-          _isListVisible == 3 ? const SettingScreen() : Container(),
+          _isListVisible == 2 ? const SpecificActivitiesScreen() :
+          _isListVisible == 3 ? const UserSettingScreen() : Container(),
         ],
       ),
     );

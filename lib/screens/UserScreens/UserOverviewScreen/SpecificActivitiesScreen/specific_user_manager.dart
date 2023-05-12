@@ -1,5 +1,5 @@
-import 'package:corporator_admin/screens/UserScreens/UserOverviewScreen/UserActivityScreen/specific_user_model.dart';
-import 'package:corporator_admin/screens/UserScreens/UserOverviewScreen/UserActivityScreen/specific_user_service.dart';
+import 'package:corporator_admin/screens/UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_model.dart';
+import 'package:corporator_admin/screens/UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_service.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../../AppLayers/Networking/apis_services.dart';
 import '../../../Auth/My_validation.dart';

@@ -36,7 +36,6 @@ class _UploadSettingScreenState extends State<UploadSettingScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               /// Setting
               Text('Settings',
                 style: TextStyle(

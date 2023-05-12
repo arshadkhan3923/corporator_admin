@@ -1,21 +1,23 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+
 import '../../../AppLayers/Networking/apis_services.dart';
 import '../../../AppLayers/Networking/network_client.dart';
-import 'download_data_table_model.dart';
+import 'memory_quota_Model.dart';
 
-class AllDownloadService {
+class ViewMemoryQuotaService {
   late ApiService apiService =
   ApiService(networkClient: Get.put(NetworkClient()));
-  List<DownloadModel> list = [];
-  Future<List<DownloadModel>> browse() async {
+  List<MemoryQuotaModel> list = [];
+  Future<List<MemoryQuotaModel>> browse() async {
     if (kDebugMode) {
-      print("this is service ");
+      print("=========this is service=======");
     }
-    final response = await apiService.getDownloadData();
-    if (kDebugMode){
-      print("this is service ");
+    final response = await apiService.getMemoryQuotaData();
+    if (kDebugMode) {
+      print("======this is service =====");
     }
     Map<String, dynamic> map = jsonDecode(response.toString());
     if (response.statusCode == 200) {
@@ -25,7 +27,7 @@ class AllDownloadService {
       if (kDebugMode) {
         print("APi Response");
       }
-      list.add(DownloadModel.fromJson(map));
+      list.add(MemoryQuotaModel.fromJson(map));
       /// print Response Api
       if (kDebugMode) {
         print(response.toString());

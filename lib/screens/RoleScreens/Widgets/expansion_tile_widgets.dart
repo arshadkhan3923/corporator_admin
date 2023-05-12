@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../AppLayers/Streaming/Overseer.dart';
-import '../../../utils/app_colors.dart';
 
 class DrawerListExpansionTile extends StatelessWidget {
   final String title;
@@ -23,7 +23,7 @@ class DrawerListExpansionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      iconColor: Overseer.whiteColors,
+      iconColor: Colors.white,
         title:  Row(
           children: [
             Image.asset(
@@ -32,7 +32,7 @@ class DrawerListExpansionTile extends StatelessWidget {
             ),
             SizedBox(width: 15.w,),
             Text(title,style: TextStyle(
-              color: Overseer.whiteColors,
+              color: Colors.white,
               fontWeight: FontWeight.w400,
               fontSize: 20.sp,
             ),
@@ -59,8 +59,8 @@ class DrawerListExpansionTile extends StatelessWidget {
     fontWeight: FontWeight.w400,
     color: Overseer.whiteColors,
     ),
-            ),
-          ),
+    ),
+    ),
         ]
     );
   }

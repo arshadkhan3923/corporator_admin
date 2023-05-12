@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 
 class DashboardTextWidgets extends StatelessWidget {
@@ -10,7 +10,7 @@ class DashboardTextWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return    Text(title,
       style: TextStyle(
-        fontSize: 14,
+        fontSize: 14.sp,
         fontWeight: FontWeight.w400,
         color: Overseer.grayColors,
       ),

@@ -4,7 +4,7 @@ import '../../../AppLayers/Streaming/Overseer.dart';
 import 'overview_screen_text.dart';
 
 class OverviewScreen extends StatefulWidget {
-  int id;
+  int? id;
   String? name;
   String? email;
   String? address;
@@ -33,11 +33,10 @@ class _OverviewScreenState extends State<OverviewScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 500.h,
+              height: 450.h,
               // width: 1157.w,
               padding: EdgeInsets.only(left: 30.w, top: 25.h),
               margin: EdgeInsets.all(30.h),
-
               decoration: BoxDecoration(
                 color: Overseer.whiteColors,
                 borderRadius: BorderRadius.circular(10.r),
@@ -70,6 +69,7 @@ class _OverviewScreenState extends State<OverviewScreen> {
                           OverviewTextWidget(title: "Purpose"),
                           SizedBox(height: 16.h,),
                           OverviewTextWidget(title: "Joining Date"),
+
                         ],
                       ),
                       SizedBox(width: 250.w,),

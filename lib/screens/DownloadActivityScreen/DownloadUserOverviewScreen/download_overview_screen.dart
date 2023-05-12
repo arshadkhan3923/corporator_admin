@@ -3,18 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../../Widgets/alertDialog_row_widgets.dart';
 
+// ignore: must_be_immutable
 class OverviewDownloadScreen extends StatefulWidget {
-  String id;
   String? name;
-  String? count;
   String? activity;
   String? createDate;
 
   OverviewDownloadScreen({
     Key? key,
-    required this.id,
     this.name,
-    this.count,
     this.activity,
     this.createDate,
   }) : super(key: key);
@@ -52,14 +49,6 @@ class _OverviewDownloadScreenState extends State<OverviewDownloadScreen> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Image.asset(
-                    //   'assets/images/details_pic.png',
-                    //   height: 290.h,
-                    //   width: 194.w,
-                    // ),
-                    // SizedBox(
-                    //   width: 20.w,
-                    // ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -71,19 +60,13 @@ class _OverviewDownloadScreenState extends State<OverviewDownloadScreen> {
                           height: 25.h,
                         ),
                         const AlertDialogTwoWidget(
-                          title: 'Count',
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                        const AlertDialogTwoWidget(
                           title: 'Activity ',
                         ),
                         SizedBox(
                           height: 25.h,
                         ),
                         const AlertDialogTwoWidget(
-                          title: 'Uploade Date',
+                          title: 'Upload Date',
                         ),
                       ],
                     ),
@@ -97,13 +80,7 @@ class _OverviewDownloadScreenState extends State<OverviewDownloadScreen> {
                           height: 20.h,
                         ),
                          AlertDialogOneWidget(
-                          title: "widget.name!",
-                        ),
-                        SizedBox(
-                          height: 25.h,
-                        ),
-                         AlertDialogOneWidget(
-                          title:  widget.count!,
+                          title: widget.name!,
                         ),
                         SizedBox(
                           height: 25.h,

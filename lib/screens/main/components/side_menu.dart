@@ -25,22 +25,27 @@ class _SideMenuState extends State<SideMenu> {
                 height: 180.h,
                 width: double.infinity,
                 color: Overseer.whiteColors,
-                child: Center(child: Image.asset("assets/images/Logo_Png_Orange.png",fit: BoxFit.fitWidth,))),
-
+                child: Center(
+                    child: Image.asset("assets/images/Logo_Png_Orange.png",
+                      fit: BoxFit.fitWidth,
+                    ),
+                ),
+            ),
           Padding(
             padding: EdgeInsets.only(left: 15.w,top: 10.h),
           child: Column(
             children: [
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return Padding(
-                      padding:  EdgeInsets.only(left: 15.w,top: 10.h),
-                      child: InkWell(
-                        onTap: (){
-                          provider.indexUpdate(0);
-                        },
+                    return InkWell(
+                      onTap: (){
+                        provider.indexUpdate(0);
+                      },
+                      child: SizedBox(
+                        height: 50.h,
                         child: Row(
                           children: [
+                            SizedBox(width: 15.w,),
                             Image.asset('assets/icons/dashboard_icon.png',color: Overseer.whiteColors,),
                             SizedBox(width: 15.w,),
                             Text('Dashboard',
@@ -52,64 +57,64 @@ class _SideMenuState extends State<SideMenu> {
                             )
                           ],
                         ),
-
                       ),
+
                     );
                   }),
-              SizedBox(height: 16.h,),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return ExpansionTile(
-                        iconColor: Colors.white,
-                        title:  Row(
+                    return InkWell(
+                      onTap: (){
+                        provider.indexUpdate(1);
+                      },
+                      child: SizedBox(
+                        height: 50.h,
+                        child: Row(
                           children: [
-                            Image.asset("assets/icons/workspaces_icon.png",
-                              color: Overseer.whiteColors,
-                            ),
                             SizedBox(width: 15.w,),
-                            Text("Workspaces",
+                            Image.asset('assets/icons/workspaces_icon.png',color: Overseer.whiteColors,),
+                            SizedBox(width: 15.w,),
+                            Text('Workspaces',
                               style: TextStyle(
-                                color: Overseer.whiteColors,
-                                fontWeight: FontWeight.w400,
                                 fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Overseer.whiteColors,
                               ),
-                            ),
+                            )
                           ],
                         ),
-                        backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.025),
-                        children: <Widget>[
-                          ListTile(
-                            onTap: (){
-                              provider.indexUpdate(1);
-                            },
-                            title: Text("View All Workspaces",
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Overseer.whiteColors,
-                              ),
-                            ),
-                          ),
-                        ]
+                      ),
+
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return DrawerListExpansionTile(
-                      title: 'Roles',
-                      text: 'View All Roles',
-                      text1: 'Add New Roles',
-                      image: 'assets/icons/role_icon.png',
-                      voidCallback1: (){
+                    return InkWell(
+                      onTap: (){
+                        Overseer. editVisi=false;
+                        Overseer. viewVisi=false;
                         provider.indexUpdate(2);
                       },
-                      voidCallback2: (){
-                        provider.indexUpdate(2);
-                      },
+                      child: SizedBox(
+                        height: 60.h,
+                        child: Row(
+                          children: [
+                            SizedBox(width: 15.w,),
+                            Image.asset("assets/icons/role_icon.png"),
+                            SizedBox(width: 15.w,),
+                            Text('All Roles',
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Overseer.whiteColors,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
                     return DrawerListExpansionTile(
@@ -118,9 +123,13 @@ class _SideMenuState extends State<SideMenu> {
                       text1: 'Add New User',
                       image: 'assets/icons/user_icon.png',
                       voidCallback1: (){
+                        Overseer. editVisi=false;
+                        Overseer. viewVisi=false;
                         provider.indexUpdate(3);
                       },
                       voidCallback2: (){
+                        Overseer. viewVisi=false;
+                        Overseer. editVisi=false;
                         provider.indexUpdate(4);
                       },
                     );
@@ -128,125 +137,118 @@ class _SideMenuState extends State<SideMenu> {
               ),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return DrawerListExpansionTile(
-                      title: 'Memory Quota',
-                      text: 'View Memory Quota',
-                      text1: 'Add Memory Quota',
-                      image: 'assets/icons/memory_icon.png',
-                      voidCallback1: (){
+                    return InkWell(
+                      onTap: (){
+                        Overseer. editVisi=false;
+                        Overseer. viewVisi=false;
                         provider.indexUpdate(5);
                       },
-                      voidCallback2: (){
-                        provider.indexUpdate(5);
-                      },
+                      child: SizedBox(
+                        height: 60.h,
+                        child: Row(
+                          children: [
+                            SizedBox(width: 15.w,),
+                            Image.asset("assets/icons/memory_icon.png",
+                              color: Overseer.whiteColors,
+                            ),
+                            SizedBox(width: 15.w,),
+                            Text('Memory Quota',
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
+                                color: Overseer.whiteColors,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return ExpansionTile(
-                        iconColor: Overseer.whiteColors,
-                        title:  Row(
+                    return InkWell(
+                      onTap: (){
+                        Overseer. editVisi=false;
+                        Overseer. viewVisi=false;
+                        provider.indexUpdate(6);
+                      },
+                      child: SizedBox(
+                        height: 60.h,
+                        child: Row(
                           children: [
+                            SizedBox(width: 15.w,),
                             Icon( Icons.local_activity_outlined,
                               size: 20.sp,
                               color: Overseer.whiteColors,
                             ),
                             SizedBox(width: 15.w,),
-                            Text("All Activities",style: TextStyle(
-                              color: Overseer.whiteColors,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20.sp,
-                            ),
-                            ),
-                          ],
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.025),
-                        children: <Widget>[
-                          ListTile(
-                            onTap: (){
-                              provider.indexUpdate(6);
-                            },
-                            title: Text("View All Activity",
+                            Text('All Activities',
                               style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
-                            ),
-                          ),
-                        ]
+                            )
+                          ],
+                        ),
+                      ),
+
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return ExpansionTile(
-                        iconColor:Overseer.whiteColors,
-                        title:  Row(
+                    return InkWell(
+                      onTap: (){
+                        provider.indexUpdate(7);
+                      },
+                      child: SizedBox(
+                        height: 50.h,
+                        child: Row(
                           children: [
-                            Image.asset("assets/icons/downloads_icon.png",color: Overseer.whiteColors,),
                             SizedBox(width: 15.w,),
-                            Text("Downloads Activities",style: TextStyle(
-                              color: Overseer.whiteColors,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20.sp,
-                            ),
-                            ),
-                          ],
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.025),
-                        children: <Widget>[
-                          ListTile(
-                            onTap: (){
-                              provider.indexUpdate(7);
-                            },
-                            title: Text("View All Downloads",
+                            Image.asset('assets/icons/downloads_icon.png',color: Overseer.whiteColors,),
+                            SizedBox(width: 15.w,),
+                            Text('Downloads Activities',
                               style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
-                            ),
-                          ),
-                        ]
+                            )
+                          ],
+                        ),
+                      ),
+
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
-                    return ExpansionTile(
-                        iconColor: Colors.white,
-                        title:  Row(
+                    return InkWell(
+                      onTap: (){
+                        Overseer. editVisi=false;
+                        Overseer. viewVisi=false;
+                        provider.indexUpdate(8);
+                      },
+                      child: SizedBox(
+                        height: 60.h,
+                        child: Row(
                           children: [
-                            Image.asset("assets/icons/uploads_icon.png",color: Overseer.whiteColors,),
                             SizedBox(width: 15.w,),
-                            Text("Upload Activities",style: TextStyle(
-                              color: Overseer.whiteColors,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20.sp,
-                            ),
-                            ),
-                          ],
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.025),
-                        children: <Widget>[
-                          ListTile(
-                            onTap: (){
-                              provider.indexUpdate(8);
-                            },
-                            title: Text("View All Upload",
+                            Image.asset('assets/icons/uploads_icon.png',color: Overseer.whiteColors,),
+                            SizedBox(width: 15.w,),
+                            Text('Upload Activities',
                               style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
-                            ),
-                          ),
-                        ]
+                            )
+                          ],
+                        ),
+                      ),
+
                     );
-                  }
-              ),
+                  }),
               Consumer<UpdateIndex>(
                   builder: (context, provider, child) {
                     return InkWell(
@@ -267,7 +269,7 @@ class _SideMenuState extends State<SideMenu> {
                               color: Overseer.whiteColors,
                               fontWeight: FontWeight.w400,
                               fontSize: 20.sp,
-                            ),
+                             ),
                             ),
                           ],
                         ),
