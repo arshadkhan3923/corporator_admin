@@ -1,5 +1,3 @@
-import 'package:corporator_admin/screens/UserScreens/AllUser/userDataTableManager.dart';
-import 'package:corporator_admin/screens/UserScreens/AllUser/user_data_table_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Observer.dart';
@@ -10,9 +8,14 @@ import '../../../constants.dart';
 import '../../RoleScreens/Widgets/dashboard_big_text_widgets.dart';
 import '../UpdateUserScreen/EditUserProfileScreen/update_profile_screen.dart';
 import '../UserOverviewScreen/view_user_screen.dart';
+import 'dart:async';
+
 
 class UserMainScreen extends StatefulWidget {
-  const UserMainScreen({Key? key}) : super(key: key);
+  final Function()? notifyParent;
+  const UserMainScreen({Key? key,
+    this.notifyParent
+  }) : super(key: key);
 
   @override
   State<UserMainScreen> createState() => _UserMainScreenState();
@@ -31,11 +34,35 @@ class _UserMainScreenState extends State<UserMainScreen> {
   refresh() {
     setState(() {});
   }
+  ///  Auto Refresh
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+  void startTimer() {
+    const Duration refreshInterval = Duration(seconds: 10);
+    _timer = Timer.periodic(refreshInterval, (timer) {
+      refreshData();
+    });
+  }
+  void refreshData() {
+    setState(() {
+      print("Arshad =========== ");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     UserDataTableManager userDataTableManager =
         Provider.of(context).fetch(UserDataTableManager);
-    if(Overseer.viewVisi==false &&Overseer.editVisi==true){
+    if(Overseer.viewVsi==false &&Overseer.editVisi==true){
       return EditUserProfileScreen(
         id: id,
         name: name,
@@ -48,7 +75,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
        // joiningDate: joiningDate,
         notifyParent: refresh,
       );}
-    else if(Overseer.viewVisi==true &&Overseer.editVisi==false){
+    else if(Overseer.viewVsi==true &&Overseer.editVisi==false){
       return ViewUserScreen(id: id,
         name: name,
         email: email,
@@ -60,13 +87,25 @@ class _UserMainScreenState extends State<UserMainScreen> {
         joiningDate: joiningDate,
         notifyParent: refresh,
       );}
-    else if(Overseer.viewVisi==false &&Overseer.editVisi==false){
+    else if(Overseer.viewVsi==false &&Overseer.editVisi==false){
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const DashboardBigTextWidgets(
-            title: 'Users',
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Overseer.viewVsi = false;
+                  Overseer.editVisi = false;
+                  widget.notifyParent;
+                },
+                icon: const Icon(Icons.arrow_back_ios, color: Overseer.bgColor,),
+              ),
+               const DashboardBigTextWidgets(
+                title: 'Users',
+              ),
+            ],
           ),
           SizedBox(
             height: 30.h,
@@ -281,7 +320,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
                                                     : "assets/images/admin_logo.png";
                                                 joiningDate = modelData.data![index].createdAt.substring(0, 10);
                                                 setState(() {
-                                                  Overseer.viewVisi = true;
+                                                  Overseer.viewVsi = true;
                                                   Overseer.editVisi = false;
                                                 });
                                               },
@@ -320,7 +359,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
                                                         : "assets/images/admin_logo.png";
                                                     joiningDate = modelData.data![index].createdAt.substring(0, 10);
                                                     setState(() {
-                                                      Overseer.viewVisi = false;
+                                                      Overseer.viewVsi = false;
                                                       Overseer.editVisi = true;
                                                     });
                                                   },
@@ -361,9 +400,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
         ],
       );}
     else{
-      return Container(
-        color:Colors.red,
-        child: Text("nothing"),);
+      return const Text("nothing");
     }
   }
 }

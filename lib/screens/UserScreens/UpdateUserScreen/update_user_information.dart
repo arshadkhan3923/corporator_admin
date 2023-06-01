@@ -329,7 +329,6 @@ class _UpdateUserInformationState extends State<UpdateUserInformation> {
                                    ).onDone(() {
                                      Navigator.of(context).pop();
                                      if (Overseer.statusCode == '200') {
-                                       Navigator.pop(context);
                                      }
                                    });
                                  } else {

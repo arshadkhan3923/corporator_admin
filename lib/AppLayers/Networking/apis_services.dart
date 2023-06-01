@@ -94,5 +94,17 @@ class ApiService {
   Future<Response> getMemoryQuotaData() {
     return networkClient.get('api/admin/AllPackagesList', {});
   }
+  /// post add new New workspace
+  Future<Response> postCreateNewWorkSpace(Map<String, Object> params) {
+    return networkClient.post('api/admin/workspace/', params);
+  }
+  ///get corporate api
+  Future<Response> getCorporateData() {
+    return networkClient.get('api/admin/users/corporate', {});
+  }
+  ///get  all Work Space
+  Future<Response> getWorkSpaceData() {
+    return networkClient.get('api/admin/workspace/', {});
+  }
 
 }

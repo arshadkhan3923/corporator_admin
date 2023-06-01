@@ -1,24 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import 'WorkSpaceActivitiesScreen/workSpace_activities_screen.dart';
+import '../../UserScreens/UserOverviewScreen/SpecificActivitiesScreen/activities_screen.dart';
 import 'WorkSpaceSettingScreen/workSpace_setting_screen.dart';
 import 'overview_workSpace_screen.dart';
 
+// ignore: must_be_immutable
 class ViewWorkSpaceScreen extends StatefulWidget {
+  final Function() notifyParent;
+  String? name;
+  String? totalStorage;
+  String? leftStorage;
+  String? updateDate;
+  String? profileImg;
+  String? profileName;
+  String? zipCode;
+  String? address;
+  String? phoneNumber;
 
-  const ViewWorkSpaceScreen({Key? key,
-
-  }) : super(key: key);
+  ViewWorkSpaceScreen(
+      {Key? key,
+        required this.notifyParent,
+      required this.updateDate,
+      required this.leftStorage,
+      required this.totalStorage,
+      required this.name,
+      required this.profileImg,
+      required this.profileName,
+      required this.address,
+      required this.zipCode,
+      required this.phoneNumber})
+      : super(key: key);
   @override
   State<ViewWorkSpaceScreen> createState() => _EditUserDownloadScreenState();
 }
+
 class _EditUserDownloadScreenState extends State<ViewWorkSpaceScreen> {
   get index => 0;
   int _isListVisible = 1;
   @override
-  Widget build(BuildContext context,) {
-    return  Scaffold(
+  Widget build(
+    BuildContext context,
+  ) {
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,22 +58,35 @@ class _EditUserDownloadScreenState extends State<ViewWorkSpaceScreen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 40.r,
-                        backgroundImage: const AssetImage(
-                          "assets/images/profile.png",
-                        ),
+                      IconButton(
+                        onPressed: () {
+                          Overseer.viewVsi = false;
+                          Overseer.editVisi = false;
+                          widget.notifyParent();
+                        },
+                        icon: const Icon(Icons.arrow_back_ios,color: Colors.white,),
                       ),
-                      SizedBox(width: 15.w,),
-                      Text("Arshad Khan",
+                      CircleAvatar(
+                          radius: 40.r,
+                          backgroundImage: NetworkImage(widget.profileImg.toString(),
+                              ),
+                      ),
+                      SizedBox(
+                        width: 15.w,
+                      ),
+                      Text(
+                        widget.profileName.toString(),
                         style: TextStyle(
                           color: Overseer.whiteColors,
                           fontSize: 24.sp,
                           fontWeight: FontWeight.w600,
-                        ),),
+                        ),
+                      ),
                     ],
                   ),
-                  SizedBox(height: 30.h,),
+                  SizedBox(
+                    height: 30.h,
+                  ),
                   Row(
                     children: [
                       InkWell(
@@ -74,18 +111,22 @@ class _EditUserDownloadScreenState extends State<ViewWorkSpaceScreen> {
                             ),
                           ),
                           child: Center(
-                            child: Text('Overview',
+                            child: Text(
+                              'Overview',
                               style: TextStyle(
                                 color: _isListVisible == 1
                                     ? Overseer.bgColor
                                     : Overseer.whiteColors,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
-                              ),),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       InkWell(
                         onTap: () {
                           setState(() {
@@ -108,18 +149,22 @@ class _EditUserDownloadScreenState extends State<ViewWorkSpaceScreen> {
                             ),
                           ),
                           child: Center(
-                            child: Text('Activities',
+                            child: Text(
+                              'Activities',
                               style: TextStyle(
                                 color: _isListVisible == 2
                                     ? Overseer.bgColor
                                     : Overseer.whiteColors,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
-                              ),),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       InkWell(
                         onTap: () {
                           setState(() {
@@ -142,26 +187,42 @@ class _EditUserDownloadScreenState extends State<ViewWorkSpaceScreen> {
                             ),
                           ),
                           child: Center(
-                            child: Text('Setting',
+                            child: Text(
+                              'Setting',
                               style: TextStyle(
                                 color: _isListVisible == 3
                                     ? Overseer.bgColor
                                     : Overseer.whiteColors,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w500,
-                              ),),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                      SizedBox(width: 10.w,),
+                      SizedBox(
+                        width: 10.w,
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            _isListVisible == 1 ? const OverviewWorkSpaceScreen() :
-            _isListVisible == 2 ? const WorkSpaceActivitiesScreen() :
-            _isListVisible == 3 ? const WorkSpaceSettingScreen() : Container(),
+            _isListVisible == 1
+                ? OverviewWorkSpaceScreen(
+                    phoneNumber: widget.phoneNumber.toString(),
+                    zipCode: widget.zipCode.toString(),
+                    address: widget.address.toString(),
+                    name: widget.name.toString(),
+                    leftStorage: widget.leftStorage.toString(),
+                    totalStorage: widget.totalStorage.toString(),
+                    updateDate: widget.updateDate.toString(),
+                  )
+                : _isListVisible == 2
+                    ? const SpecificActivitiesScreen()
+                    : _isListVisible == 3
+                        ? const WorkSpaceSettingScreen()
+                        : Container(),
           ],
         ),
       ),

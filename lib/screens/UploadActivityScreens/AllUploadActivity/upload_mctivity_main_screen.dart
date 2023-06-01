@@ -11,6 +11,8 @@ import '../../RoleScreens/Widgets/dashboard_big_text_widgets.dart';
 import '../../RoleScreens/Widgets/header.dart';
 import '../UploadUserOverviewScreen/view_upload_overview_screen.dart';
 import 'all_upload_manager_screen.dart';
+import 'dart:async';
+
 
 class UploadActivityMainScreen  extends StatefulWidget {
   const UploadActivityMainScreen ({Key? key}) : super(key: key);
@@ -28,11 +30,36 @@ class _UploadActivityMainScreenState extends State<UploadActivityMainScreen> {
   refresh() {
     setState(() {});
   }
+
+  ///  Auto Refresh
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+  void startTimer() {
+    const Duration refreshInterval = Duration(seconds: 10);
+    _timer = Timer.periodic(refreshInterval, (timer) {
+      refreshData();
+    });
+  }
+  void refreshData() {
+    setState(() {
+      print("Arshad =========== ");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     AllUploadManager allUploadManager =
     Provider.of(context).fetch(AllUploadManager);
-    return Overseer.viewVisi == false? Column(
+    return Overseer.viewVsi == false? Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

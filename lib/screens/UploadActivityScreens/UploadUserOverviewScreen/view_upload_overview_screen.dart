@@ -49,7 +49,7 @@ class _ViewUploadScreenState extends State<ViewUploadScreen> {
                         IconButton(
                             onPressed: () {
                               print("********************************************************");
-                              Overseer.viewVisi = false;
+                              Overseer.viewVsi = false;
                               Overseer.editVisi = false;
                               widget.notifyParent();
                             },

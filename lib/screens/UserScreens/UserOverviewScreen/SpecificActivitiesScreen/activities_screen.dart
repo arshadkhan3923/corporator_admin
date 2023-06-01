@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../AppLayers/Streaming/Observer.dart';
 import '../../../../AppLayers/Streaming/Overseer.dart';
 import '../../../../AppLayers/Streaming/Provider.dart';
-
 class SpecificActivitiesScreen extends StatefulWidget {
   const SpecificActivitiesScreen({Key? key}) : super(key: key);
 
@@ -61,6 +60,7 @@ class _ActivitiesScreenState extends State<SpecificActivitiesScreen> {
                                   ? Colors.red:modelData.data[index].activity=="logOut"
                                   ?Colors.red:modelData.data[index].activity=="register"
                                   ?Colors.blue:modelData.data[index].activity=="store"
+                                  ?Colors.blue:modelData.data[index].activity=="upload"
                                   ?Colors.blue:null,
                               radius: 50.r,
                               child:modelData.data[index].activity=="login"
@@ -70,7 +70,8 @@ class _ActivitiesScreenState extends State<SpecificActivitiesScreen> {
                                    ? const Icon(Icons.delete):modelData.data[index].activity=="logOut"
                                     ?const Icon(Icons.logout_outlined):modelData.data[index].activity=="register"
                                   ?const Icon(Icons.app_registration_outlined):modelData.data[index].activity=="store"
-                                  ?const Icon(Icons.store):null
+                                  ?const Icon(Icons.upload):modelData.data[index].activity=="upload"
+                                  ?const Icon(Icons.store):Container()
                             ),
                             title: Text(modelData.data[index].activity,
                                 style:  TextStyle(

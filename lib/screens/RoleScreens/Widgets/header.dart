@@ -52,7 +52,7 @@ class Header extends StatelessWidget {
             ),
           ),
           SizedBox(width: Get.width *.010,),
-         const ProfileScreen(),
+          ProfileScreen(),
           SizedBox(width: Get.width *.020,),
         ],
       ),
@@ -70,7 +70,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       style:  TextStyle(
         color: Colors.black,
         fontSize: 16.sp

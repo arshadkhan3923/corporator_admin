@@ -77,6 +77,8 @@ mixin MyValidation {
   static bool  isRoleUpdateLength(String text) => text.length >= 6;
   static bool  isRoleOwnerIdLength(String text) => text.isNotEmpty;
   static bool  isRoleDecryptLength(String text) => text.length >= 2;
+  //TODO: Add new WorkSpace
+  static bool isAddNewWorkSpaceNameLength(String text) => text.isNotEmpty;
 
   ///
   //TODO: Login screen
@@ -785,6 +787,19 @@ mixin MyValidation {
       }
       sink.add("");
       sink.addError("Required Your Decrypt");
+    }
+  });
+
+  final workSpaceLength =
+  StreamTransformer<String, String>.fromHandlers(handleData: (value, sink) {
+    if (isAddNewWorkSpaceNameLength(value)) {
+      sink.add(value);
+    } else {
+      if (kDebugMode) {
+        print(" This Data is Required > $value");
+      }
+      sink.add("");
+      sink.addError("Please Enter your Data");
     }
   });
 }

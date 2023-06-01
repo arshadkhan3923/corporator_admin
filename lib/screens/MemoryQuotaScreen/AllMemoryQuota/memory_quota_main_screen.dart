@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import '../../../AppLayers/Streaming/Observer.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../../AppLayers/Streaming/Provider.dart';
@@ -10,6 +9,8 @@ import '../../RoleScreens/Widgets/dashboard_big_text_widgets.dart';
 import '../MemoryQuotaOverviewScreen/memoey_quota_overview_screen.dart';
 import 'memory_quota_Model.dart';
 import 'memory_quota_manager.dart';
+import 'dart:async';
+
 
 class MemoryQuotaMainScreen extends StatefulWidget {
   const MemoryQuotaMainScreen({Key? key}) : super(key: key);
@@ -28,11 +29,35 @@ class _MemoryQuotaMainScreenState extends State<MemoryQuotaMainScreen> {
     setState(() {
     });
   }
+  ///  Auto Refresh
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+  void startTimer() {
+    const Duration refreshInterval = Duration(seconds: 10);
+    _timer = Timer.periodic(refreshInterval, (timer) {
+      refreshData();
+    });
+  }
+  void refreshData() {
+    setState(() {
+      print("Arshad =========== ");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     AllMemoryQuotaManager allMemoryQuotaManager =
     Provider.of(context).fetch(AllMemoryQuotaManager);
-    return Overseer.viewVisi==true
+    return Overseer.viewVsi==true
         ? SizedBox(
            height: 950.h,
          child: ViewUserMemoryQuotaScreen(
@@ -42,12 +67,13 @@ class _MemoryQuotaMainScreenState extends State<MemoryQuotaMainScreen> {
            duration: duration,
            notifyParent: refresh,
       ),
-    )
+     )
         : Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const DashboardBigTextWidgets(title: 'Memory Quota ',),
+            const DashboardBigTextWidgets(title: 'Memory Quota ',),
+
         SizedBox(height: 30.h,),
         Container(
           height: 855.h,
@@ -60,13 +86,12 @@ class _MemoryQuotaMainScreenState extends State<MemoryQuotaMainScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                    "All Memory Quota ",
+                Text("All Memory Quota ",
                     style: TextStyle(
                         color: Overseer.textColors,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w500
-                    )
+                    ),
                 ),
                 SizedBox(height: 20.h),
                 Observer<List<MemoryQuotaModel>>(
@@ -100,7 +125,9 @@ class _MemoryQuotaMainScreenState extends State<MemoryQuotaMainScreen> {
                                                 fontSize: 22.sp
                                             ),
                                           ),
-                                          Icon(Icons.arrow_drop_down,size: 22.sp,color: Overseer.grayColors,),
+                                          Icon(Icons.arrow_drop_down,size: 22.sp,
+                                            color: Overseer.grayColors,
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -206,7 +233,7 @@ class _MemoryQuotaMainScreenState extends State<MemoryQuotaMainScreen> {
                                                   maxSpace= modelData.data[index].quota;
                                                   duration= modelData.data[index].duration;
                                                   setState(() {
-                                                    Overseer.viewVisi = true;
+                                                    Overseer.viewVsi = true;
                                                   });
                                                 },
                                                 child: Text("View",

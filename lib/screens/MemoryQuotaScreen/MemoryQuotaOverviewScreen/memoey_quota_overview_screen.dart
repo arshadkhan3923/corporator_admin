@@ -50,7 +50,7 @@ class _EditUserDownloadScreenState extends State<ViewUserMemoryQuotaScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Overseer.viewVisi = false;
+                          Overseer.viewVsi = false;
                           Overseer.editVisi = false;
                           widget.notifyParent();
                         },

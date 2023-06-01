@@ -9,6 +9,7 @@ import '../../../Widgets/sow_entry_and_search_widgets.dart';
 import '../../../constants.dart';
 import '../RoleUserOverviewScreen/user_role_overview_screen.dart';
 import '../Widgets/dashboard_big_text_widgets.dart';
+import 'dart:async';
 
 class RolesMainScreen extends StatefulWidget {
   const RolesMainScreen({Key? key}) : super(key: key);
@@ -24,6 +25,30 @@ class _RolesMainScreenState extends State<RolesMainScreen> {
   refresh() {
     setState(() {});
   }
+  ///  Auto Refresh
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+  void startTimer() {
+    const Duration refreshInterval = Duration(seconds: 10);
+    _timer = Timer.periodic(refreshInterval, (timer) {
+      refreshData();
+    });
+  }
+  void refreshData() {
+    setState(() {
+      print("Arshad =========== ");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     ViewRoleManager viewRoleManager =
@@ -243,7 +268,7 @@ class _RolesMainScreenState extends State<RolesMainScreen> {
                                               email = modelData.data[index].email;
                                               update = modelData.data[index].updatedAt.substring(0, 10);
                                                 setState(() {
-                                                  Overseer.viewVisi =
+                                                  Overseer.viewVsi =
                                                   true;
                                                 });
                                         },

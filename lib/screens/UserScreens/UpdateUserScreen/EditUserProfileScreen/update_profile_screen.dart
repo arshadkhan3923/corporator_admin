@@ -55,7 +55,7 @@ class _EditUserProfileScreenState extends State<EditUserProfileScreen> {
                     IconButton(
                         onPressed: () {
                           print("********************************************************");
-                          Overseer.viewVisi = false;
+                          Overseer.viewVsi = false;
                           Overseer.editVisi = false;
                           widget.notifyParent();
                         },

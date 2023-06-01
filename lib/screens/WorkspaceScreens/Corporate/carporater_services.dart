@@ -1,25 +1,20 @@
-
-
-
-
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 import '../../../AppLayers/Networking/apis_services.dart';
 import '../../../AppLayers/Networking/network_client.dart';
-import 'memory_quota_Model.dart';
+import 'carporater_model.dart';
 
-class ViewMemoryQuotaService {
+class CorporateServices {
   late ApiService apiService =
-  ApiService(networkClient: Get.put(NetworkClient()));
-  List<MemoryQuotaModel> list = [];
-  Future<List<MemoryQuotaModel>> browse() async {
+      ApiService(networkClient: Get.put(NetworkClient()));
+  List<CorporateModel> list = [];
+  Future<List<CorporateModel>> browse() async {
     if (kDebugMode) {
       print("=========this is service=======");
     }
-    final response = await apiService.getMemoryQuotaData();
+    final response = await apiService.getCorporateData();
     if (kDebugMode) {
       print("======this is service =====");
     }
@@ -31,7 +26,8 @@ class ViewMemoryQuotaService {
       if (kDebugMode) {
         print("APi Response");
       }
-      list.add(MemoryQuotaModel.fromJson(map));
+      list.add(CorporateModel.fromJson(map));
+
       /// print Response Api
       if (kDebugMode) {
         print(response.toString());

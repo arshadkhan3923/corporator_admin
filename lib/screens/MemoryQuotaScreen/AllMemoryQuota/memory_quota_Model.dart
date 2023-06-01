@@ -7,7 +7,6 @@ class MemoryQuotaModel {
   MemoryQuotaModel.fromJson(Map<String, dynamic> json){
     data = List.from(json['data']).map((e)=>Data.fromJson(e)).toList();
   }
-
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['data'] = data.map((e)=>e.toJson()).toList();
@@ -83,7 +82,7 @@ class User {
     required this.name,
     required this.email,
     this.emailVerifiedAt,
-    required this.decrypt,
+    this.decrypt,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -92,7 +91,7 @@ class User {
   late final String name;
   late final String email;
   late final Null emailVerifiedAt;
-  late final String decrypt;
+  late final String? decrypt;
   late final String createdAt;
   late final String updatedAt;
 
@@ -102,7 +101,7 @@ class User {
     name = json['name'];
     email = json['email'];
     emailVerifiedAt = null;
-    decrypt = json['decrypt'];
+    decrypt = null;
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }

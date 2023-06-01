@@ -28,7 +28,7 @@ class DrawerListExpansionTile extends StatelessWidget {
           children: [
             Image.asset(
               image,
-              color: Overseer.whiteColors,
+              color: Overseer.grayColors,
             ),
             SizedBox(width: 15.w,),
             Text(title,style: TextStyle(
@@ -47,7 +47,7 @@ class DrawerListExpansionTile extends StatelessWidget {
       style: TextStyle(
         fontSize: 18.sp,
         fontWeight: FontWeight.w400,
-        color: Overseer.whiteColors,
+        color: Overseer.grayColors,
       ),
     ),
           ),
@@ -57,10 +57,10 @@ class DrawerListExpansionTile extends StatelessWidget {
     style: TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
-    color: Overseer.whiteColors,
+    color: Overseer.grayColors,
     ),
-    ),
-    ),
+            ),
+          ),
         ]
     );
   }

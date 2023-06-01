@@ -55,7 +55,7 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Overseer.viewVisi = false;
+                          Overseer.viewVsi = false;
                           Overseer.editVisi = false;
                           widget.notifyParent();
                         },

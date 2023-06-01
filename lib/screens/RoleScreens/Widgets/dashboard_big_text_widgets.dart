@@ -7,7 +7,7 @@ class DashboardBigTextWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return    Text(title,
+    return  Text(title,
       style: TextStyle(
         fontSize: 24.sp,
         fontWeight: FontWeight.w600,

@@ -4,13 +4,30 @@ import '../../../AppLayers/Streaming/Overseer.dart';
 import '../../DownloadActivityScreen/DownloadUserOverviewScreen/download_overview_screen_text.dart';
 
 class OverviewWorkSpaceScreen extends StatefulWidget {
-  const OverviewWorkSpaceScreen({
-    Key? key,
-  }) : super(key: key);
+  String name;
+  String totalStorage;
+  String leftStorage;
+  String updateDate;
+  String zipCode;
+  String address;
+  String phoneNumber;
+
+  OverviewWorkSpaceScreen(
+      {Key? key,
+      required this.name,
+      required this.leftStorage,
+      required this.totalStorage,
+      required this.updateDate,
+      required this.address,
+      required this.phoneNumber,
+      required this.zipCode})
+      : super(key: key);
 
   @override
-  State<OverviewWorkSpaceScreen> createState() => _OverviewDownloadScreenState();
+  State<OverviewWorkSpaceScreen> createState() =>
+      _OverviewDownloadScreenState();
 }
+
 class _OverviewDownloadScreenState extends State<OverviewWorkSpaceScreen> {
   final _formKey = GlobalKey<FormState>();
   get index => 0;
@@ -39,7 +56,9 @@ class _OverviewDownloadScreenState extends State<OverviewWorkSpaceScreen> {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 15.h,),
+                SizedBox(
+                  height: 15.h,
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,31 +66,74 @@ class _OverviewDownloadScreenState extends State<OverviewWorkSpaceScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         OverviewTextWidget(title: "Name"),
-                        SizedBox(height: 16.h,),
+                        SizedBox(
+                          height: 16.h,
+                        ),
                         OverviewTextWidget(title: "Total Storage"),
-                        SizedBox(height: 16.h,),
+                        SizedBox(
+                          height: 16.h,
+                        ),
                         OverviewTextWidget(title: "Storage Left"),
-                        SizedBox(height: 16.h,),
+                        SizedBox(
+                          height: 16.h,
+                        ),
                         OverviewTextWidget(title: "Updated Date"),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: "Phone Number"),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: "ZIP Code"),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: "Address"),
                       ],
                     ),
-                    SizedBox(width: 250.w,),
+                    SizedBox(
+                      width: 250.w,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        OverviewTextWidget(title: "Flutter App"),
-                        SizedBox(height: 16.h,),
-                        OverviewTextWidget(title:" 50GB"),
-                        SizedBox(height: 16.h,),
-                        OverviewTextWidget(title: "20Gb"),
-                        SizedBox(height: 16.h,),
-                        OverviewTextWidget(title: "05/04/2023"),
+                        OverviewTextWidget(title: widget.name.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(
+                            title: widget.totalStorage.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(
+                            title: widget.leftStorage.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: widget.updateDate.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(
+                            title: widget.phoneNumber.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: widget.zipCode.toString()),
+                        SizedBox(
+                          height: 16.h,
+                        ),
+                        OverviewTextWidget(title: widget.address.toString()),
                       ],
                     ),
                     const Spacer(),
                   ],
                 ),
-                SizedBox(height: 40.h,),
+                SizedBox(
+                  height: 40.h,
+                ),
               ],
             ),
           ),

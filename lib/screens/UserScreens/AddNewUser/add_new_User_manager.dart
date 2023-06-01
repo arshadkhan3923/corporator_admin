@@ -15,22 +15,22 @@ class AddNewUserManager with MyValidation {
 
   /// User phone number
   final _phoneNumber = BehaviorSubject<String>();
-  Stream<String> get phoneNumber$ => _phoneNumber.stream.transform(phoneNumberNewUserLength);
+  Stream<String> get phoneNumber$ => _phoneNumber.stream.transform(addressAppNewUserLength);
   Sink<String> get inPhoneNumber => _phoneNumber.sink;
 
   /// User Zip Code
   final _userZipCode = BehaviorSubject<String>();
-  Stream<String> get userZipCode$ => _userZipCode.stream.transform(zipCodeAppNewUserLength);
+  Stream<String> get userZipCode$ => _userZipCode.stream.transform(addressAppNewUserLength);
   Sink<String> get inUserZipCode => _userZipCode.sink;
 
   /// User Purpose
   final _userPurpose = BehaviorSubject<String>();
-  Stream<String> get userPurpose$ => _userPurpose.stream.transform(purposeAppNewUserLength);
+  Stream<String> get userPurpose$ => _userPurpose.stream.transform(addressAppNewUserLength);
   Sink<String> get inUserPurpose => _userPurpose.sink;
 
   ///owen id
   final _ownerId = BehaviorSubject<String>();
-  Stream<String> get ownerId$ => _ownerId.stream.transform(appNewUserOwenIdLength);
+  Stream<String> get ownerId$ => _ownerId.stream.transform(addressAppNewUserLength);
   Sink<String> get inOwnerId => _ownerId.sink;
 
 

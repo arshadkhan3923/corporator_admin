@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import '../../../screens/Auth/login/login_manager.dart';
 import '../../screens/AllActivitiesScreen/all_activities_manager.dart';
 import '../../screens/Auth/ChangePassword/change_password_manager.dart';
@@ -11,9 +10,13 @@ import '../../screens/MemoryQuotaScreen/AllMemoryQuota/memory_quota_manager.dart
 import '../../screens/RoleScreens/ViewAllRoles/role_manager.screen.dart';
 import '../../screens/UploadActivityScreens/AllUploadActivity/all_upload_manager_screen.dart';
 import '../../screens/UserScreens/AddNewUser/add_new_User_manager.dart';
-import '../../screens/UserScreens/AllUser/userDataTableManager.dart';
 import '../../screens/UserScreens/UpdateUserScreen/userUpdate_manager.dart';
 import '../../screens/UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_manager.dart';
+import '../../screens/WorkspaceScreens/Add_New_WorkSpace/add_new_workSpace_manager.dart';
+import '../../screens/WorkspaceScreens/AllWorkSpace/Workspace_Table_manager.dart';
+import '../../screens/WorkspaceScreens/Corporate/carporater_manager.dart';
+import 'package:corporator_admin//screens/UserScreens/AllUser/userDataTableManager.dart';
+
 
 class Overseer {
 
@@ -28,7 +31,8 @@ class Overseer {
   static String downActivityId ="";
   static String spacUsDowActId ="";
   static String packActivityId ="";
-
+  static bool viewVsi = false;
+  static bool editVisi = false;
   static bool viewVisi =false;
   static bool viewVisi1 =true;
   static bool viewVisi2 =true;
@@ -37,7 +41,6 @@ class Overseer {
   static bool viewVisi5 =true;
   static bool viewVisi6 =true;
   static bool viewVisi7 =true;
-  static bool editVisi =false;
   static bool edit_view_visi =true;
 
   /// App Colors
@@ -70,6 +73,9 @@ class Overseer {
     register(SpecificUserManager, SpecificUserManager());
     register(AllRevenueManager, AllRevenueManager());
     register(AllMemoryQuotaManager, AllMemoryQuotaManager());
+    register(WorkSpaceManager, WorkSpaceManager());
+    register(AddWorkSpaceNewManager, AddWorkSpaceNewManager());
+    register(CorporateManager, CorporateManager());
   }
 
   /// Register the manager to this overseer to store in repository

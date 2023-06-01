@@ -10,6 +10,8 @@ import '../../RoleScreens/Widgets/header.dart';
 import '../DownloadUserOverviewScreen/user_download_overview_screen.dart';
 import 'all_download_activity_manager.dart';
 import 'download_data_table_model.dart';
+import 'dart:async';
+
 
 class DownloadActivityMainScreen extends StatefulWidget {
   const DownloadActivityMainScreen({Key? key}) : super(key: key);
@@ -26,6 +28,30 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
   refresh() {
     setState(() {});
   }
+///  Auto Refresh
+  late Timer _timer;
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+  void startTimer() {
+    const Duration refreshInterval = Duration(seconds: 10);
+    _timer = Timer.periodic(refreshInterval, (timer) {
+      refreshData();
+    });
+  }
+  void refreshData() {
+    setState(() {
+      print("Arshad =========== ");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     AllDownloadManager allDownloadManager =

@@ -1,42 +1,36 @@
-
-
-
-
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 import '../../../AppLayers/Networking/apis_services.dart';
 import '../../../AppLayers/Networking/network_client.dart';
-import 'memory_quota_Model.dart';
+import 'Workspace_Table_model.dart';
 
-class ViewMemoryQuotaService {
-  late ApiService apiService =
-  ApiService(networkClient: Get.put(NetworkClient()));
-  List<MemoryQuotaModel> list = [];
-  Future<List<MemoryQuotaModel>> browse() async {
+class WorkSpaceService {
+  late ApiService apiService = ApiService(networkClient: Get.put(NetworkClient()));
+  List<WorkSpaceModel> workSpaceList = [];
+  Future<List<WorkSpaceModel>> browse() async {
     if (kDebugMode) {
-      print("=========this is service=======");
+      print("This is service");
     }
-    final response = await apiService.getMemoryQuotaData();
+    final response = await apiService.getWorkSpaceData();
     if (kDebugMode) {
-      print("======this is service =====");
+      print("This is service ");
     }
     Map<String, dynamic> map = jsonDecode(response.toString());
     if (response.statusCode == 200) {
       if (kDebugMode) {
-        print("this is service ");
+        print("This is service ");
       }
       if (kDebugMode) {
         print("APi Response");
       }
-      list.add(MemoryQuotaModel.fromJson(map));
+      workSpaceList.add(WorkSpaceModel.fromJson(map));
       /// print Response Api
       if (kDebugMode) {
         print(response.toString());
       }
     } else {}
-    return list;
+    return workSpaceList;
   }
 }

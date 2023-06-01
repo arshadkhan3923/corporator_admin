@@ -46,7 +46,7 @@ class _ViewUSerRoleScreenState extends State<ViewUSerRoleScreen> {
                     IconButton(
                         onPressed: () {
                           print("********************************************************");
-                          Overseer.viewVisi = false;
+                          Overseer.viewVsi = false;
                           Overseer.editVisi = false;
                           widget.notifyParent();
                         },

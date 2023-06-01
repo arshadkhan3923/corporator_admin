@@ -8,18 +8,18 @@ class UploadModel {
     if (json['data'] != null) {
       data = <Data>[];
       json['data'].forEach((v) {
-        data!.add( Data.fromJson(v));
+        data!.add(new Data.fromJson(v));
       });
     }
     message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    data['message'] = message;
+    data['message'] = this.message;
     return data;
   }
 }
@@ -55,11 +55,11 @@ class Data {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     userName = json['userName'];
-    file = json['file'] != null ?  File.fromJson(json['file']) : null;
+    file = json['file'] != null ? new File.fromJson(json['file']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['user_id'] = this.userId;
     data['file_id'] = this.fileId;
