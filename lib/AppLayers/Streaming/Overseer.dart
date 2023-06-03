@@ -10,12 +10,12 @@ import '../../screens/MemoryQuotaScreen/AllMemoryQuota/memory_quota_manager.dart
 import '../../screens/RoleScreens/ViewAllRoles/role_manager.screen.dart';
 import '../../screens/UploadActivityScreens/AllUploadActivity/all_upload_manager_screen.dart';
 import '../../screens/UserScreens/AddNewUser/add_new_User_manager.dart';
+import '../../screens/UserScreens/AllUser/userDataTableManager.dart';
 import '../../screens/UserScreens/UpdateUserScreen/userUpdate_manager.dart';
 import '../../screens/UserScreens/UserOverviewScreen/SpecificActivitiesScreen/specific_user_manager.dart';
 import '../../screens/WorkspaceScreens/Add_New_WorkSpace/add_new_workSpace_manager.dart';
 import '../../screens/WorkspaceScreens/AllWorkSpace/Workspace_Table_manager.dart';
 import '../../screens/WorkspaceScreens/Corporate/carporater_manager.dart';
-import 'package:corporator_admin//screens/UserScreens/AllUser/userDataTableManager.dart';
 
 
 class Overseer {

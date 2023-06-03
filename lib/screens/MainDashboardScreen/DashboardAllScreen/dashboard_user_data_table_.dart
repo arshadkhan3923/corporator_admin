@@ -22,61 +22,65 @@ class _DashboardUserDataTableState extends State<DashboardUserDataTable> {
         onSuccess: (context,snapshot) {
           List<UserModel>? data = snapshot;
           UserModel modelData = data![0];
-          return DataTable(
-            horizontalMargin: 0,
-            columnSpacing: MediaQuery.of(context).size.width *.09,
-            columns: [
-              DataColumn(
-                label: Row(
-                  children: [
-                    SizedBox(width: 15.w,),
-                    Text("ID",
-                      style: TextStyle(
-                          color: Overseer.grayColors,
-                          fontSize: 22.sp
-                      ),
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+              child: DataTable(
+                horizontalMargin: 0,
+                columnSpacing: MediaQuery.of(context).size.width *.085,
+                columns: [
+                  DataColumn(
+                    label: Row(
+                      children: [
+                        SizedBox(width: 15.w,),
+                        Text("ID",
+                          style: TextStyle(
+                              color: Overseer.grayColors,
+                              fontSize: 22.sp
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, size: 22.sp,
+                          color: Overseer.grayColors,),
+                      ],
                     ),
-                    Icon(Icons.arrow_drop_down, size: 22.sp,
-                      color: Overseer.grayColors,),
-                  ],
-                ),
-              ),
-              DataColumn(
-                label: Row(
-                  children: [
-                    Text("Name",
-                      style: TextStyle(
-                          color: Overseer.grayColors,
-                          fontSize: 22.sp
-                      ),
+                  ),
+                  DataColumn(
+                    label: Row(
+                      children: [
+                        Text("Name",
+                          style: TextStyle(
+                              color: Overseer.grayColors,
+                              fontSize: 22.sp
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, size: 22.sp,
+                          color: Overseer.grayColors,),
+                      ],
                     ),
-                    Icon(Icons.arrow_drop_down, size: 22.sp,
-                      color: Overseer.grayColors,),
-                  ],
-                ),
-              ),
-              DataColumn(
-                label: Row(
-                  children: [
-                    Text("Email",
-                      style: TextStyle(
-                          color: Overseer.grayColors,
-                          fontSize: 22.sp
-                      ),
+                  ),
+                  DataColumn(
+                    label: Row(
+                      children: [
+                        Text("Email",
+                          style: TextStyle(
+                              color: Overseer.grayColors,
+                              fontSize: 22.sp
+                          ),
+                        ),
+                        Icon(Icons.arrow_drop_down, size: 22.sp,
+                          color: Overseer.grayColors,),
+                      ],
                     ),
-                    Icon(Icons.arrow_drop_down, size: 22.sp,
-                      color: Overseer.grayColors,),
-                  ],
-                ),
-              ),
-            ],
-            rows: List.generate(modelData.data!.length > 3 ? 3 : modelData.data!.length, (index){
+                  ),
+                ],
+                rows: List.generate(modelData.data!.length > 3 ? 3 : modelData.data!.length, (index){
                   return DataRow(
                     cells: [
                       DataCell(
                         Padding(
                           padding:  const EdgeInsets.symmetric(
-                              horizontal: defaultPadding),
+                              horizontal: defaultPadding
+                          ),
                           child: Text(modelData.data![index].id.toString(),
                             style: TextStyle(
                               color: Overseer.textColors,
@@ -107,6 +111,8 @@ class _DashboardUserDataTableState extends State<DashboardUserDataTable> {
                     ],
                   );
                 }
+                ),
+              ),
             ),
           );
         },

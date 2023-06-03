@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import '../../DownloadActivityScreen/DownloadUserOverviewScreen/download_overview_screen_text.dart';
+import '../../RoleScreens/RoleUserOverviewScreen/role_overview_screen_text.dart';
 
+// ignore: must_be_immutable
 class OverviewMemoryQuotaScreen extends StatefulWidget {
   String? userName;
   String? packName;

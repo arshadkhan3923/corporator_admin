@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../AppLayers/Streaming/Overseer.dart';
+import '../../../responsive.dart';
 
 class DrawerListExpansionTile extends StatelessWidget {
   final String title;
@@ -28,13 +29,15 @@ class DrawerListExpansionTile extends StatelessWidget {
           children: [
             Image.asset(
               image,
-              color: Overseer.grayColors,
+              color: Overseer.whiteColors,
             ),
             SizedBox(width: 15.w,),
             Text(title,style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w400,
-              fontSize: 20.sp,
+              fontWeight: FontWeight.w300,
+              fontSize: Responsive.isDesktop(context)?24.sp:
+              Responsive.isTablet(context)?16.sp:
+              Responsive.isTablet(context)?14.sp:24.sp,
             ),
             ),
           ],
@@ -47,7 +50,7 @@ class DrawerListExpansionTile extends StatelessWidget {
       style: TextStyle(
         fontSize: 18.sp,
         fontWeight: FontWeight.w400,
-        color: Overseer.grayColors,
+        color: Overseer.whiteColors,
       ),
     ),
           ),
@@ -57,7 +60,7 @@ class DrawerListExpansionTile extends StatelessWidget {
     style: TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
-    color: Overseer.grayColors,
+    color: Overseer.whiteColors,
     ),
             ),
           ),

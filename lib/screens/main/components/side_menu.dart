@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
 import '../Tab_update_provider.dart';
 import '../../RoleScreens/Widgets/expansion_tile_widgets.dart';
+import '../../../responsive.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({
@@ -50,7 +51,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('Dashboard',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -58,7 +61,6 @@ class _SideMenuState extends State<SideMenu> {
                           ],
                         ),
                       ),
-
                     );
                   }),
               Consumer<UpdateIndex>(
@@ -76,7 +78,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('Workspaces',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -104,7 +108,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('All Roles',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -154,7 +160,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('Memory Quota',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -184,7 +192,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('All Activities',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -210,7 +220,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('Downloads Activities',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -238,7 +250,9 @@ class _SideMenuState extends State<SideMenu> {
                             SizedBox(width: 15.w,),
                             Text('Upload Activities',
                               style: TextStyle(
-                                fontSize: 20.sp,
+                                fontSize: Responsive.isDesktop(context)?24.sp:
+                                Responsive.isTablet(context)?16.sp:
+                                Responsive.isTablet(context)?14.sp:24.sp,
                                 fontWeight: FontWeight.w500,
                                 color: Overseer.whiteColors,
                               ),
@@ -268,7 +282,9 @@ class _SideMenuState extends State<SideMenu> {
                             Text('Settings',style: TextStyle(
                               color: Overseer.whiteColors,
                               fontWeight: FontWeight.w400,
-                              fontSize: 20.sp,
+                              fontSize: Responsive.isDesktop(context)?24.sp:
+                              Responsive.isTablet(context)?16.sp:
+                              Responsive.isTablet(context)?14.sp:24.sp,
                              ),
                             ),
                           ],

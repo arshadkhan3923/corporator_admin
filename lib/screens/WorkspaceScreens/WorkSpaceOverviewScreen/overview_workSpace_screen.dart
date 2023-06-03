@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Overseer.dart';
-import '../../DownloadActivityScreen/DownloadUserOverviewScreen/download_overview_screen_text.dart';
+import '../../MemoryQuotaScreen/MemoryQuotaOverviewScreen/memoey_quota_overview_screen_text.dart';
 
 class OverviewWorkSpaceScreen extends StatefulWidget {
   String name;

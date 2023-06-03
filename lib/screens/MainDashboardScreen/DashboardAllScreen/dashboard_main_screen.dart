@@ -19,9 +19,11 @@ import 'dashboard_workspace_data_table_.dart';
 
 class DashboardMainScreen extends StatefulWidget {
   const DashboardMainScreen({Key? key}) : super(key: key);
+
   @override
   State<DashboardMainScreen> createState() => _DashboardMainScreenState();
 }
+
 class _DashboardMainScreenState extends State<DashboardMainScreen> {
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,8 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                               Overseer.viewVisi1 = false;
                                             });
                                           },
-                                          child: const AllUserScreen()),
+                                          child: const AllUserScreen(),
+                                      ),
                                       const AllRevenueScreen(),
                                       GestureDetector(
                                           onTap: () {
@@ -65,14 +68,16 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                               Overseer.viewVisi2 = false;
                                             });
                                           },
-                                          child: const AllDownloadsActivity()),
+                                          child: const AllDownloadsActivity(),
+                                      ),
                                       GestureDetector(
                                           onTap: () {
                                             setState(() {
                                               Overseer.viewVisi3 = false;
                                             });
                                           },
-                                          child: const AllUploadActivity()),
+                                          child: const AllUploadActivity(),
+                                      ),
                                     ],
                                   ),
                                   SizedBox(
@@ -99,14 +104,16 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                                 padding: EdgeInsets.only(
                                                     left: 25.w,
                                                     right: 25.w,
-                                                    top: 25.h),
+                                                    top: 25.h,
+                                                ),
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
                                                     const DashboardBigTextWidgets(
-                                                        title: 'Roles'),
+                                                        title: 'Roles',
+                                                    ),
                                                     InkWell(
                                                       onTap: () {
                                                         setState(() {
@@ -119,13 +126,19 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                                         style: TextStyle(
                                                             color: Overseer
                                                                 .blackColors,
-                                                            fontSize: 18.sp),
+                                                            fontSize: 18.sp,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                              const DashboardRolesDataTable(),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 10.w, right: 10.w,
+                                                ),
+                                                child: const DashboardRolesDataTable(),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -151,46 +164,20 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                                   height: 5.h,
                                                 ),
                                                 Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: const [
-                                                    ChartTextWidget(
-                                                      title: 'JAN',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'FEB',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'MAR',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'APR',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'MAY',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'JUN',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'JULY',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'AUG',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'SEP',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'OCT',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'NOV',
-                                                    ),
-                                                    ChartTextWidget(
-                                                      title: 'DEC',
-                                                    ),
+                                                    ChartTextWidget(title: 'JAN'),
+                                                    ChartTextWidget(title: 'FEB'),
+                                                    ChartTextWidget(title: 'MAR'),
+                                                    ChartTextWidget(title: 'APR'),
+                                                    ChartTextWidget(title: 'MAY',),
+                                                    ChartTextWidget(title: 'JUN'),
+                                                    ChartTextWidget(title: 'JULY'),
+                                                    ChartTextWidget(title: 'AUG'),
+                                                    ChartTextWidget(title: 'SEP'),
+                                                    ChartTextWidget(title: 'OCT'),
+                                                    ChartTextWidget(title: 'NOV'),
+                                                    ChartTextWidget(title: 'DEC'),
                                                   ],
                                                 ),
                                               ],
@@ -250,7 +237,12 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                                   ],
                                                 ),
                                               ),
-                                              const DashboardUserDataTable(),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 10.w, right: 10.w),
+                                                child:
+                                                    const DashboardUserDataTable(),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -298,7 +290,12 @@ class _DashboardMainScreenState extends State<DashboardMainScreen> {
                                                   ],
                                                 ),
                                               ),
-                                              const DashboardWorkSpaceDataTable(),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 10.w, right: 10.w),
+                                                child:
+                                                    const DashboardWorkSpaceDataTable(),
+                                              ),
                                             ],
                                           ),
                                         ),

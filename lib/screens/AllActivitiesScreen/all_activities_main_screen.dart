@@ -54,7 +54,7 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                       Text("Name",
                                         style: TextStyle(
                                             color: Overseer.grayColors,
-                                            fontSize: 22.sp
+                                            fontSize: 24.sp
                                         ),
                                       ),
                                       Icon(Icons.arrow_drop_down,size: 22.sp,color: Overseer.grayColors,),
@@ -64,23 +64,10 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                 DataColumn(
                                   label: Row(
                                     children: [
-                                      Text("File",
-                                        style: TextStyle(
-                                            color: Overseer.grayColors,
-                                            fontSize: 22.sp
-                                        ),
-                                      ),
-                                      Icon(Icons.arrow_drop_down,size: 22.sp, color: Overseer.grayColors,),
-                                    ],
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: Row(
-                                    children: [
                                       Text("Activities",
                                         style: TextStyle(
                                             color: Overseer.grayColors,
-                                            fontSize: 22.sp
+                                            fontSize: 24.sp
                                         ),
                                       ),
                                       Icon(Icons.arrow_drop_down,size: 22.sp, color: Overseer.grayColors,),
@@ -93,7 +80,7 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                       Text("Created Date",
                                         style: TextStyle(
                                             color: Overseer.grayColors,
-                                            fontSize: 22.sp
+                                            fontSize: 24.sp
                                         ),
                                       ),
                                       Icon(
@@ -116,18 +103,9 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                             child: Text(modelData.data![index].userName.toString(),
                                               style: TextStyle(
                                                 color: Overseer.textColors,
-                                                fontSize: 20.sp,
+                                                fontSize: 22.sp,
                                                 fontWeight: FontWeight.w400,
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Text(modelData.data![index].file.toString(),
-                                            style: TextStyle(
-                                              color: Overseer.textColors,
-                                              fontSize: 20.sp,
-                                              fontWeight: FontWeight.w400,
                                             ),
                                           ),
                                         ),
@@ -135,7 +113,7 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                           Text(modelData.data![index].activity.toString(),
                                             style: TextStyle(
                                               color: Overseer.textColors,
-                                              fontSize: 20.sp,
+                                              fontSize: 22.sp,
                                               fontWeight: FontWeight.w400,
                                             ),
                                           ),
@@ -144,7 +122,7 @@ class _AllActivitiesScreenState extends State<AllActivitiesScreen> {
                                           Text(modelData.data![index].createdAt!.substring(0,10).toString(),
                                             style: TextStyle(
                                               color: Overseer.textColors,
-                                              fontSize: 20.sp,
+                                              fontSize: 22.sp,
                                               fontWeight: FontWeight.w400,
                                             ),
                                           ),

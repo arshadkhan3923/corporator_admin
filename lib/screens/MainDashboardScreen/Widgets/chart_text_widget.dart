@@ -10,7 +10,7 @@ class ChartTextWidget extends StatelessWidget {
     return Text(title,
       style: TextStyle(
           color: Overseer.bgColors,
-          fontSize: 12.sp,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w400
       ),
     );

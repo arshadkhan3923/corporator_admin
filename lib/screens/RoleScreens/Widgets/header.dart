@@ -11,7 +11,6 @@ class Header extends StatelessWidget {
   const Header({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,13 +27,13 @@ class Header extends StatelessWidget {
             ),
           SizedBox(width: 5.w),
           if (!Responsive.isMobile(context))
-            SizedBox(
-                height: Get.height*.045,
-                width: Get.width*.230,
-                child: const SearchField(
-                  icon: (Icons.search),
-                ),
-            ),
+            // SizedBox(
+            //     height: Get.height*.045,
+            //     width: Get.width*.230,
+            //     child: const SearchField(
+            //       icon: (Icons.search),
+            //     ),
+            // ),
           Spacer(),
           Container(
             height: Get.height*.045,
@@ -47,12 +46,12 @@ class Header extends StatelessWidget {
               child: Icon(
                 Icons.notifications_outlined,
                 color: Overseer.grayColors,
-                size: 14.sp,
+                size: 16.sp,
               ),
             ),
           ),
           SizedBox(width: Get.width *.010,),
-          ProfileScreen(),
+          const ProfileScreen(),
           SizedBox(width: Get.width *.020,),
         ],
       ),
@@ -75,7 +74,6 @@ class SearchField extends StatelessWidget {
         color: Colors.black,
         fontSize: 16.sp
       ),
-
       controller: controller,
       onChanged: onChange,
       decoration: InputDecoration(

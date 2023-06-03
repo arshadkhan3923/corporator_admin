@@ -18,9 +18,8 @@ import '../UserScreens/AllUser/user_main_screen.dart';
 import '../WorkspaceScreens/AllWorkSpace/workspace_main_screen.dart';
 import 'components/side_menu.dart';
 
-
 class MainScreen extends StatefulWidget {
-   MainScreen({super.key});
+   const MainScreen({super.key});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -55,7 +54,7 @@ class _MainScreenState extends State<MainScreen> {
                 child: SideMenu(),
               ),
              Expanded(
-              flex: 5,
+              flex: 4,
               child: SingleChildScrollView(
                 child: Column(
                   children: [

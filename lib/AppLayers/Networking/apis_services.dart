@@ -33,33 +33,9 @@ class ApiService {
   Future<Response> postUpdateUserData(Map<String, Object> params) {
     return networkClient.post('api/update/${Overseer.updateUserId}', params);
   }
-  ///get package view
-  Future<Response> getPackageDataTable() {
-    return networkClient.get('api/package', {});
-  }
-  /// post add new package
-  Future<Response> postAddNewPackage(Map<String, Object> params) {
-    return networkClient.post('api/package', params);
-  }
-  /// post Update package
-  Future<Response> postUpdatePackage(Map<String, Object> params) {
-    return networkClient.post('api/package', params);
-  }
   ///get Vendor view
   Future<Response> getVendorDataTable() {
     return networkClient.get('api/admin/users/vendor', {});
-  }
-  ///get App theme
-  Future<Response> getAppThemeData() {
-    return networkClient.get('api/DesktopTheme', {});
-  }
-  ///post Add New  theme
-  Future<Response> postAddNewThemeData(Map<String, Object> params) {
-    return networkClient.post('api/DesktopTheme', params);
-  }
-  ///post Update New theme
-  Future<Response> postUpdateThemeData(Map<String, Object> params) {
-    return networkClient.post('api/DesktopTheme', params);
   }
   // ${Overseer.updateThemeId}
   ///Get All Role
@@ -106,5 +82,4 @@ class ApiService {
   Future<Response> getWorkSpaceData() {
     return networkClient.get('api/admin/workspace/', {});
   }
-
 }

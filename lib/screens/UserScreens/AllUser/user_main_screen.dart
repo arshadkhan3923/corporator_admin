@@ -1,3 +1,5 @@
+import 'package:corporator_admin/screens/UserScreens/AllUser/userDataTableManager.dart';
+import 'package:corporator_admin/screens/UserScreens/AllUser/user_data_table_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../AppLayers/Streaming/Observer.dart';
@@ -149,7 +151,7 @@ class _UserMainScreenState extends State<UserMainScreen> {
                                 DataTable(
                                   horizontalMargin: 0,
                                   columnSpacing:
-                                  MediaQuery.of(context).size.width * .08,
+                                  MediaQuery.of(context).size.width * .05,
                                   columns: [
                                     DataColumn(
                                       label: Row(

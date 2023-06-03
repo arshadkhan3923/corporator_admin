@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,7 +8,6 @@ import '../../../AppLayers/Streaming/Provider.dart';
 import '../../../responsive.dart';
 import '../../RoleScreens/Widgets/dashboard_big_text_widgets.dart';
 import '../../RoleScreens/Widgets/header.dart';
-import '../DownloadUserOverviewScreen/user_download_overview_screen.dart';
 import 'all_download_activity_manager.dart';
 import 'download_data_table_model.dart';
 import 'dart:async';
@@ -48,7 +48,9 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
   }
   void refreshData() {
     setState(() {
-      print("Arshad =========== ");
+      if (kDebugMode) {
+        print("Data Refresh =========== ");
+      }
     });
   }
 
@@ -123,7 +125,7 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                 "Name",
                                                 style: TextStyle(
                                                     color: Overseer.grayColors,
-                                                    fontSize: 22.sp),
+                                                    fontSize: 24.sp),
                                               ),
                                               Icon(
                                                 Icons.arrow_drop_down,
@@ -140,7 +142,7 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                 "Activity",
                                                 style: TextStyle(
                                                     color: Overseer.grayColors,
-                                                    fontSize: 22.sp),
+                                                    fontSize: 24.sp),
                                               ),
                                               Icon(
                                                 Icons.arrow_drop_down,
@@ -157,7 +159,7 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                 "Upload Date",
                                                 style: TextStyle(
                                                     color: Overseer.grayColors,
-                                                    fontSize: 22.sp),
+                                                    fontSize: 24.sp),
                                               ),
                                               Icon(
                                                 Icons.arrow_drop_down,
@@ -167,14 +169,6 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                             ],
                                           ),
                                         ),
-                                        // DataColumn(
-                                        //   label: Text(
-                                        //     "View",
-                                        //     style: TextStyle(
-                                        //         color: Overseer.grayColors,
-                                        //         fontSize: 22.sp),
-                                        //   ),
-                                        // ),
                                       ],
                                       rows: List.generate(modelData.data!.length,
                                           (index) {
@@ -185,7 +179,7 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                 modelData.data![index].userName.toString(),
                                                 style: TextStyle(
                                                   color: Overseer.textColors,
-                                                  fontSize: 20.sp,
+                                                  fontSize: 22.sp,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -195,7 +189,7 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                 modelData.data![index].activity.toString(),
                                                 style: TextStyle(
                                                   color: Overseer.textColors,
-                                                  fontSize: 20.sp,
+                                                  fontSize: 22.sp,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -206,31 +200,11 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
                                                     .substring(0, 19),
                                                 style: TextStyle(
                                                   color: Overseer.textColors,
-                                                  fontSize: 20.sp,
+                                                  fontSize: 22.sp,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
                                             ),
-                                            // DataCell(
-                                            //   InkWell(
-                                            //     onTap: () {
-                                            //         name= modelData.data![index].userName.toString();
-                                            //         activity= modelData.data![index].activity.toString();
-                                            //         createDate= modelData.data![index].createdAt.toString();
-                                            //         setState(() {
-                                            //           Overseer.viewvisi=true;
-                                            //         });
-                                            //     },
-                                            //     child: Text(
-                                            //       "View",
-                                            //       style: TextStyle(
-                                            //         color: Overseer.primaryColor,
-                                            //         fontSize: 20.sp,
-                                            //         fontWeight: FontWeight.w400,
-                                            //       ),
-                                            //     ),
-                                            //   ),
-                                            // ),
                                           ],
                                         );
                                       }),
@@ -258,15 +232,16 @@ class _DownloadActivityMainScreenState extends State<DownloadActivityMainScreen>
           ),
         ),
       ],
-    )
-        : SizedBox(
-      height: 950.h,
-      child: ViewDownloadScreen(
-        name: name,
-        activity: activity,
-        createDate: createDate,
-        notifyParent: refresh,
-      ),
-    );
+    ) : Container();
+
+    // SizedBox(
+    //   height: 950.h,
+    //   child: ViewDownloadScreen(
+    //     name: name,
+    //     activity: activity,
+    //     createDate: createDate,
+    //     notifyParent: refresh,
+    //   ),
+    // );
   }
 }
